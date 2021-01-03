@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import Login from '../Login/Login';
 import Main from '../Main/Main';
 // import About from '../About/About';
 // import Header from '../Header/Header';
@@ -14,11 +15,20 @@ function App() {
     setIsPopupOpen(true);
   }
 
+  function closeAllPopups() {
+    setIsPopupOpen(false);
+  }
+
   return (
     <div className='page'>
       <Main
         onClick={handlePopupOpen}
       />
+      <Login
+        isOpen={isPopupOpen}
+        onClose={closeAllPopups}
+      >
+      </Login>
     </div>
   );
 }

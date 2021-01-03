@@ -19,7 +19,7 @@ function Navigation() {
       >
         Сохранённые статьи
       </NavLink> */}
-      <button className='navbar__btn'>Авторизоваться</button>
+      {/* <button className='navbar__btn'>Авторизоваться</button> */}
     </nav>
   )
 }

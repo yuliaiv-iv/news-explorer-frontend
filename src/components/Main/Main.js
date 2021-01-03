@@ -7,7 +7,9 @@ import SearchForm from '../SearchForm/SearchForm';
 function Main({ onClick }) {
   return (
     <main className=''>
-      <Header />
+      <Header
+        onClick={onClick}
+      />
       <SearchForm />
       <About />
     </main>
