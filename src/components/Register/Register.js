@@ -1,17 +1,17 @@
 import React from 'react';
-import FormInput from '../FormInput/FormInput';
 import Popup from '../Popup/Popup';
+import FormInput from '../FormInput/FormInput';
 import SubmitButton from '../SubmitButton/SubmitButton';
-import './Login.css'
+import './Register.css'
 
-function Login({ onClose, isOpen, onToggle, isDisabled }) {
+function Register({ onClose, isOpen, onToggle }) {
 
   return (
     <Popup
       isOpen={isOpen}
       onClose={onClose}
-      title='Вход'
-      toggle='Зарегистрироваться'
+      title='Регистрация'
+      toggle='Войти'
       onToggle={onToggle}
     >
       <FormInput
@@ -26,12 +26,20 @@ function Login({ onClose, isOpen, onToggle, isDisabled }) {
         label='Пароль'
         placeholder='Введите пароль'
       />
+      <FormInput
+        name='name'
+        type='text'
+        label='Имя'
+        placeholder='Введите своё имя'
+        minLength="2" 
+        maxLength="20"
+      />
       <SubmitButton
-        button='Войти'
-        // isDisabled={true}
+        button='Зарегистрироваться'
+      // isDisabled={true}
       />
     </Popup>
   )
 }
 
-export default Login;
+export default Register;

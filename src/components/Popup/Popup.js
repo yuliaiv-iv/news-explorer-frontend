@@ -1,8 +1,8 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { CloseBtn } from '../../images';
 import './Popup.css'
 
-function Popup({ onClose, isOpen, children, title }) {
+function Popup({ onClose, isOpen, children, title, toggle, onToggle }) {
 
   function handleEsc(event) {
     if (event.key !== 'Escape') {
@@ -25,17 +25,20 @@ function Popup({ onClose, isOpen, children, title }) {
   return (
     <section
       className={`popup ${isOpen ? 'popup_open' : ''}`}
-      onMouseUp={handleOverlayClose}
+      onMouseDown={handleOverlayClose}
     >
       <div className='popup__container'>
         <CloseBtn
           type='button'
           aria-label='закрыть модальное окно'
-          className='button popup__close'
+          className='popup__close'
           onClick={onClose}
         />
         <h3 className='popup__title'>{title}</h3>
-        {children}
+        <form className="popup__form">
+          {children}
+        </form>
+        <h4 className='popup__toggle'>или <span className='popup__span' onClick={onToggle}>{toggle}</span></h4>
       </div>
     </section>
   )
