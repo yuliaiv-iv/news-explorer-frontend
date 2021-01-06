@@ -1,0 +1,66 @@
+export const initialCards = [
+  {
+    title: 'Национальное достояние – парки',
+    text: 'В 2016 году Америка отмечала важный юбилей: сто лет назад здесь начала складываться система национальных парков – охраняемых территорий, где и сегодня каждый может приобщиться к природе.',
+    source: 'лента.ру',
+    date: '2 августа, 2019',
+    url: 'https://anupamchugh.medium.com/3-reasons-why-the-bitcoin-bull-run-of-2020-is-different-from-2017-550f4e3e255e',
+    image: 'https://c1.wallpaperflare.com/preview/287/1019/785/blue-green-leaves-plants.jpg'
+  },
+  {
+    title: 'Лесные огоньки: история одной фотографии',
+    text: 'Фотограф отвлеклась от освещения суровой политической реальности Мексики, чтобы запечатлеть ускользающую красоту одного из местных чудес природы.',
+    source: 'медуза',
+    date: '3 августа, 2019',
+    url: 'https://anupamchugh.medium.com/3-reasons-why-the-bitcoin-bull-run-of-2020-is-different-from-2017-550f4e3e255e',
+    image: 'https://c1.wallpaperflare.com/preview/297/539/696/plant-leaf-minimal-botanical.jpg'
+  },
+  {
+    title: 'Первозданная тайга»: новый фотопроект Игоря Шпиленка',
+    text: 'Знаменитый фотограф снимает первозданные леса России, чтобы рассказать о необходимости их сохранения. В этот раз он отправился в Двинско-Пинежскую тайгу, где. Знаменитый фотограф снимает первозданные леса России, чтобы рассказать о необходимости их сохранения. В этот раз он отправился в Двинско-Пинежскую тайгу, где.',
+    source: 'лента.ру',
+    date: '4 августа, 2019',
+    url: 'https://anupamchugh.medium.com/3-reasons-why-the-bitcoin-bull-run-of-2020-is-different-from-2017-550f4e3e255e',
+    image: 'https://c1.wallpaperflare.com/preview/419/429/240/leaf-plant-eucalyptus-green.jpg'
+  },
+  {
+    title: 'Национальное достояние',
+    text: 'В 2016 году Америка отмечала важный юбилей: сто лет назад здесь начала складываться система национальных парков – охраняемых территорий, где и сегодня каждый может приобщиться к природе.',
+    source: 'медуза',
+    date: '5 августа, 2019',
+    url: 'https://anupamchugh.medium.com/3-reasons-why-the-bitcoin-bull-run-of-2020-is-different-from-2017-550f4e3e255e',
+    image: 'https://c4.wallpaperflare.com/wallpaper/937/369/210/leaves-water-drops-blurred-photography-wallpaper-preview.jpg'
+  },
+  {
+    title: 'Лесные огоньки: история одной фотографии',
+    text: 'Знаменитый фотограф снимает первозданные леса России, чтобы рассказать о необходимости их сохранения. В этот раз он отправился в Двинско-Пинежскую тайгу, где.',
+    source: 'лента.ру',
+    date: '6 августа, 2019',
+    url: 'https://anupamchugh.medium.com/3-reasons-why-the-bitcoin-bull-run-of-2020-is-different-from-2017-550f4e3e255e',
+    image: 'https://c4.wallpaperflare.com/wallpaper/1021/8/61/rain-nature-wood-landscape-wallpaper-preview.jpg'
+  },
+  {
+    title: 'Первозданная тайга»: новый фотопроект Игоря Шпиленка',
+    text: 'Знаменитый фотограф снимает первозданные леса России, чтобы рассказать о необходимости их сохранения. В этот раз он отправился в Двинско-Пинежскую тайгу, где.',
+    source: 'лента.ру',
+    date: '4 августа, 2019',
+    url: 'https://anupamchugh.medium.com/3-reasons-why-the-bitcoin-bull-run-of-2020-is-different-from-2017-550f4e3e255e',
+    image: 'https://c4.wallpaperflare.com/wallpaper/752/37/124/succulent-nature-plants-flowers-wallpaper-preview.jpg'
+  },
+  {
+    title: 'Национальное достояние – парки',
+    text: 'В 2016 году Америка отмечала важный юбилей: сто лет назад здесь начала складываться система национальных парков – охраняемых территорий, где и сегодня каждый может приобщиться к природе.',
+    source: 'медуза',
+    date: '5 августа, 2019',
+    url: 'https://anupamchugh.medium.com/3-reasons-why-the-bitcoin-bull-run-of-2020-is-different-from-2017-550f4e3e255e',
+    image: 'https://c4.wallpaperflare.com/wallpaper/937/369/210/leaves-water-drops-blurred-photography-wallpaper-preview.jpg'
+  },
+  {
+    title: 'Лесные огоньки: история одной фотографии',
+    text: 'Знаменитый фотограф снимает первозданные леса России, чтобы рассказать о необходимости их сохранения. В этот раз он отправился в Двинско-Пинежскую тайгу, где.',
+    source: 'лента.ру',
+    date: '6 августа, 2019',
+    url: 'https://anupamchugh.medium.com/3-reasons-why-the-bitcoin-bull-run-of-2020-is-different-from-2017-550f4e3e255e',
+    image: 'https://c4.wallpaperflare.com/wallpaper/1021/8/61/rain-nature-wood-landscape-wallpaper-preview.jpg'
+  }
+];

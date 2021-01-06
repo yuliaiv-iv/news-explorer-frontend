@@ -6,16 +6,22 @@
 @font-face {
   font-family: 'Roboto';
   src: url(./roboto-black.woff);
-  font-weight: bold;
+  font-weight: 900;
 }
-@font-face {
+/* @font-face {
   font-family: 'Roboto';
   src: url(./roboto-medium.woff);
   font-weight: medium;
-}
+} */
 
 @font-face {
   font-family: 'Roboto Slab';
   src: url(./robotoslab-regular.woff);
-  font-weight: normal;
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: 'Roboto Slab Pro';
+  src: url(./sourcesanspro-regular.woff);
+  font-weight: 400;
 }
