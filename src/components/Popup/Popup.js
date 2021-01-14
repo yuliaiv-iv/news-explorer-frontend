@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { CloseBtn } from '../../images';
 import './Popup.css'
 

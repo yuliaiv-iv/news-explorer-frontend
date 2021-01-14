@@ -1,55 +1,34 @@
-import React, { useEffect, useState } from 'react';
-import Login from '../Login/Login';
+import React, { useState } from 'react';
+import { Route, Switch } from 'react-router-dom';
+import Footer from '../Footer/Footer.js';
 import Main from '../Main/Main';
-import Register from '../Register/Register';
-// import About from '../About/About';
-// import Header from '../Header/Header';
-// import SearchForm from '../SearchForm/SearchForm';
+import SavedNews from '../SavedNews/SavedNews';
 import './App.css';
 
 
 function App() {
 
-  const [isLoginOpen, setIsLoginOpen] = useState(false);
-  const [isRegisterOpen, setIsRegisterOpen] = useState(false);
-
-  function handlePopupOpen() {
-    setIsLoginOpen(true);
-  }
-
-  function handleTogglePopup() {
-    if(isLoginOpen) {
-      setIsLoginOpen(false)
-      setIsRegisterOpen(true)
-    } else {
-      setIsLoginOpen(true)
-      setIsRegisterOpen(false)
-    }
-  }
-
-  function closeAllPopups() {
-    setIsLoginOpen(false);
-    setIsRegisterOpen(false)
-  }
+  // const [isLoginOpen, setIsLoginOpen] = useState(false);
+  // const [isRegisterOpen, setIsRegisterOpen] = useState(false);
+  const [isLogin, setIsLogin] = useState(true)
+console.log(Footer)
 
   return (
-    <div className='page'>
-      <Main
-        onClick={handlePopupOpen}
-      />
-      <Login
-        isOpen={isLoginOpen}
-        onClose={closeAllPopups}
-        onToggle={handleTogglePopup}
-      >
-      </Login>
-      <Register
-        isOpen={isRegisterOpen}
-        onClose={closeAllPopups}
-        onToggle={handleTogglePopup}
-      >
-      </Register>
-    </div>
+    <>
+        <Switch>
+          <Route exact path='/'>
+            <Main
+              isLogin={isLogin}
+            />
+          </Route>
+          <Route path='/saved-news'>
+            <SavedNews
+              isLogin={isLogin}
+            />
+          </Route>
+        </Switch>
+        <Footer />
+    </>
   );
 }
 

@@ -27,8 +27,10 @@ function Login({ onClose, isOpen, onToggle, isDisabled }) {
         placeholder='Введите пароль'
       />
       <SubmitButton
+        type='submit'
+        name='popup'
         button='Войти'
-        // isDisabled={true}
+      // isDisabled={true}
       />
     </Popup>
   )

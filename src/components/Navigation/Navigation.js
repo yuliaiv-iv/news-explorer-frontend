@@ -1,25 +1,26 @@
 import React from 'react';
 import './Navigation.css';
-import { Route, Switch, NavLink } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
-function Navigation() {
+
+
+function Navigation({theme}) {
   return (
     <nav className='navbar'>
       <NavLink
-        exact to="/"
-        activeClassName="navbar__link_active"
-        className="navbar__link"
+        exact to='/'
+        className={`navbar__link navbar__link_${theme}`}
+        activeClassName={`navbar__active navbar__active_${theme}`}
       >
         Главная
       </NavLink>
-      {/* <NavLink
-        exact to="/saved-news"
-        className="navbar__link"
-        activeClassName="navbar__link_active"
+      <NavLink
+        exact to='/saved-news'
+        className={`navbar__link navbar__link_${theme}`}
+        activeClassName={`navbar__active navbar__active_${theme}`}
       >
         Сохранённые статьи
-      </NavLink> */}
-      {/* <button className='navbar__btn'>Авторизоваться</button> */}
+      </NavLink> 
     </nav>
   )
 }

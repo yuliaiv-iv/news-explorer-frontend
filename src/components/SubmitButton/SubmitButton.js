@@ -1,16 +1,17 @@
 import React from 'react';
 import './SubmitButton.css';
 
-function SubmitButton({ classname, isDisabled, button, onClick }) {
+function SubmitButton({ children, type, modifier, isDisabled, button, onClick, name }) {
 
   return (
     <button
-      type='submit'
-      className={`popup__button-submit ${isDisabled ? 'popup__button-submit_disabled' : ''}`}
+      type={type}
+      className={`button ${`${name}__button`} ${modifier}`}
       disabled={isDisabled}
       onClick={onClick}
     >
       {button}
+      {children}
     </button>
   )
 }

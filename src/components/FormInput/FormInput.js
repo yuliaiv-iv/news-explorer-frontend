@@ -7,7 +7,7 @@ function FormInput({ name, label, type, placeholder }) {
     <>
       <label
         className='popup__label'
-        for={name}
+        htmlFor={name}
       >
         {label}
         <input

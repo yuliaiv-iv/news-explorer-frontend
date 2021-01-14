@@ -1,0 +1,12 @@
+.footer {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-areas:
+  "footer__copyright"
+  "footer__nav"
+  "footer__nav" 
+} 
+
+/* .footer__copyright { grid-area: footer__copyright; }
+.footer__nav { grid-area: footer__nav; }
+.footer__nav { grid-area: footer__nav-social; } */

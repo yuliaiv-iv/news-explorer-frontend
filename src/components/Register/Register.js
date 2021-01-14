@@ -13,6 +13,7 @@ function Register({ onClose, isOpen, onToggle }) {
       title='Регистрация'
       toggle='Войти'
       onToggle={onToggle}
+      buttonClass='popup'
     >
       <FormInput
         name='email'
@@ -31,10 +32,12 @@ function Register({ onClose, isOpen, onToggle }) {
         type='text'
         label='Имя'
         placeholder='Введите своё имя'
-        minLength="2" 
+        minLength="2"
         maxLength="20"
       />
       <SubmitButton
+        type='submit'
+        name='popup'
         button='Зарегистрироваться'
       // isDisabled={true}
       />
