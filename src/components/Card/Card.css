@@ -1,12 +1,10 @@
 .card {
   max-width: 400px;
   width: 100%;
-  /* margin: auto; */
   overflow: hidden;
   display: flex;
   flex-direction: column;
   position: relative;
-  /* margin: 0; */
   border-radius: 16px;
   background-color: #ffffff;
   height: 576px;
@@ -56,9 +54,12 @@
   color: #1A1B22;
   display: -webkit-box;
   -webkit-box-orient: vertical;
-  /* -webkit-line-clamp: 4; */
   -webkit-line-clamp: var(--lines);
   overflow: hidden;
+}
+
+.card__link {
+  text-decoration: none;
 }
 
 .card__source {
@@ -76,7 +77,7 @@
   bottom: 24px;
 }
 
-.card__bookmark {
+.card__icon {
   position: absolute;
   top: 24px;
   right: 24px;
@@ -98,9 +99,18 @@
   margin: 0;
   visibility: hidden;
 }
+.card__popup_hide {
+  display: none;
+}
 
-.card__bookmark:hover .card__path { stroke: #1A1B22; }
+.card__icon_bookmark-fill { fill: #2F71E5; stroke: #2F71E5; }
 
-.card__bookmark:hover + .card__popup { visibility: visible; };
+.card__icon:hover .card__icon_trash { fill: #1A1B22; }
+.card__icon:hover .card__icon_bookmark { stroke: #1A1B22; }
+
+
+.card__icon:hover + .card__popup { visibility: visible; };
+
+.card__icon:hover .card__icon-svg_try { fill: red; stroke: red; }
 
 

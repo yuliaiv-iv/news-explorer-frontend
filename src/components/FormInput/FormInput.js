@@ -21,7 +21,7 @@ function FormInput({ name, label, type, placeholder }) {
         {/* <span
           className='popup__input-error'
         >
-          Ошибка
+          Неправильный формат email
         </span> */}
       </label>
     </>

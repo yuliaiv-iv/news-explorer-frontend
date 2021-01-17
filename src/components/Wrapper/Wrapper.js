@@ -1,10 +1,13 @@
 import React from 'react';
 import './Wrapper.css';
 
-function Wrapper({ children }) {
+function Wrapper({ children, section }) {
 
   return (
-    <section className='section__wrapper'>{children}</section>
+    <section className={`${section}__wrapper`}
+    >
+      {children}
+    </section>
   )
 }
 

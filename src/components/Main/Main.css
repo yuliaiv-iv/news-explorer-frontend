@@ -1,4 +1,13 @@
 /* .main {
+  background-color: #F5F6F7;
+} */
+
+.main__conteiner {
+  width: calc(100% - 104px*2);
+  margin: auto;
+}
+/* 
+.main {
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: auto;
@@ -9,16 +18,12 @@
     "card-news"
     "savednews"
     "about";
-}
+} */
 
-.savednews { grid-area: savednews; }
+/* .savednews { grid-area: savednews; }
 .search { grid-area: search; }
 .preloader { grid-area: preloader; }
 .card-news { grid-area: card-news; }
 .about { grid-area: about; } */
 
-/* .page__content {
-  background: url('../../images/main-background.jpg');
-  background-repeat: no-repeat;
-  background-size: contain;
-} */
+

@@ -1,5 +1,10 @@
-.section__wrapper {
+.header__wrapper {
   background: url('../../images/main-background.jpg');
   background-repeat: no-repeat;
   background-size: cover;
+}
+
+.main__wrapper {
+  background-color: #F5F6F7;
+
 }

@@ -1,5 +1,7 @@
 .search {
-  padding: 80px;
+  width: calc(100% - 104px*2);
+  margin: auto;
+  padding: 80px 0 80px;
 }
 
 .search__panel {

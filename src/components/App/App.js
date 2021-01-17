@@ -1,28 +1,25 @@
 import React, { useState } from 'react';
 import { Route, Switch } from 'react-router-dom';
+import MainPage from '../../pages/MainPage.js';
+import SavedNewsPage from '../../pages/SavedNewsPage.js';
 import Footer from '../Footer/Footer.js';
-import Main from '../Main/Main';
-import SavedNews from '../SavedNews/SavedNews';
 import './App.css';
 
 
 function App() {
 
-  // const [isLoginOpen, setIsLoginOpen] = useState(false);
-  // const [isRegisterOpen, setIsRegisterOpen] = useState(false);
   const [isLogin, setIsLogin] = useState(true)
-console.log(Footer)
 
   return (
     <>
         <Switch>
           <Route exact path='/'>
-            <Main
+            <MainPage
               isLogin={isLogin}
             />
           </Route>
           <Route path='/saved-news'>
-            <SavedNews
+            <SavedNewsPage
               isLogin={isLogin}
             />
           </Route>

@@ -1,17 +1,18 @@
-import React, { useState } from 'react';
+import React, { useState} from 'react';
 import './NewsCardList.css';
 import { initialCards as cards } from '../../utils/data';
 import Card from '../Card/Card';
 import SubmitButton from '../SubmitButton/SubmitButton';
 
-
-function NewsCardList() {
+function NewsCardList ({ isLogin }) {
 
   const [visibleCards, setVisibleCards] = useState(3);
 
   const showMoreCards = () => {
     setVisibleCards((prevValue) => prevValue + 3);
   }
+
+  const isEntire = visibleCards >= cards.length;
 
   return (
 
@@ -21,10 +22,12 @@ function NewsCardList() {
         <ul className='card-news__list'>
           {cards.slice(0, visibleCards).map(card =>
             <Card {...card}
-              key={card.id}
+              popup='Войдите, чтобы сохранять статьи'
+              isLogin={isLogin}
             />)}
         </ul>
         <SubmitButton
+          modifier={isEntire ? 'card-news__button_hide' : ''}
           name='card-news'
           button='Показать еще'
           onClick={showMoreCards}

@@ -1,12 +1,26 @@
 .footer {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-template-areas:
-  "footer__copyright"
-  "footer__nav"
-  "footer__nav" 
-} 
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  align-items: center;
+}
 
-/* .footer__copyright { grid-area: footer__copyright; }
-.footer__nav { grid-area: footer__nav; }
-.footer__nav { grid-area: footer__nav-social; } */
+.footer__copyright {
+  margin: 0;
+  font-family:' Roboto';
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.37;
+  color: #B6BCBF;
+}
+
+.footer__link {
+  font-weight: 400;
+  color: #1A1B22;
+}
+
+.footer__social {
+  max-width: 70px;
+  display: flex;
+  justify-content: space-between;
+}
