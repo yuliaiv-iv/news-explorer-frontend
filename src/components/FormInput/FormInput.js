@@ -1,7 +1,7 @@
 import React from 'react';
 import './FormInput.css'
 
-function FormInput({ name, label, type, placeholder }) {
+function FormInput({ children, name, label, type, placeholder }) {
 
   return (
     <>
@@ -18,6 +18,7 @@ function FormInput({ name, label, type, placeholder }) {
           placeholder={placeholder}
           required
         />
+        {children}
         {/* <span
           className='popup__input-error'
         >

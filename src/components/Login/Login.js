@@ -1,10 +1,10 @@
 import React from 'react';
 import FormInput from '../FormInput/FormInput';
-import Popup from '../Popup/Popup';
-import SubmitButton from '../SubmitButton/SubmitButton';
+import Form from '../Form/Form';
 import './Login.css'
+import Popup from '../Popup/Popup';
 
-function Login({ onClose, isOpen, onToggle, isDisabled }) {
+function Login({ onClose, isOpen, onToggle }) {
 
   return (
     <Popup
@@ -14,26 +14,34 @@ function Login({ onClose, isOpen, onToggle, isDisabled }) {
       toggle='Зарегистрироваться'
       onToggle={onToggle}
     >
-      <FormInput
-        name='email'
-        type='email'
-        label='Email'
-        placeholder='Введите почту'
-      />
-      <FormInput
-        name='password'
-        type='password'
-        label='Пароль'
-        placeholder='Введите пароль'
-      />
-      <SubmitButton
-        type='submit'
-        name='popup'
+      <Form
         button='Войти'
-      // isDisabled={true}
-      />
+        isDisabled={true} // реализация неактивной кнопки
+      >
+        <FormInput
+          name='email'
+          type='email'
+          label='Email'
+          placeholder='Введите почту'
+        >
+          <span
+            className='popup__input-error'
+          >
+            Неправильный формат email
+        </span>
+        </FormInput>
+        <FormInput
+          name='password'
+          type='password'
+          label='Пароль'
+          placeholder='Введите пароль'
+        />
+      </Form>
     </Popup>
   )
 }
 
 export default Login;
+
+// button='Войти'
+// isDisabled={true} // реализация неактивной кнопки

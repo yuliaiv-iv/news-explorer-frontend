@@ -4,33 +4,3 @@
   align-items: center;
   height: 80px;
 }
-
-/* .nav__list {
-  display: flex;
-  flex-direction: column;
-} */
-
-/* .main {
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: auto;
-  grid-gap: 80px;
-  grid-template-areas:
-    "search"
-    "preloader"
-    "card-news"
-    "savednews"
-    "about";
-}
-
-.savednews { grid-area: savednews; }
-.search { grid-area: search; }
-.preloader { grid-area: preloader; }
-.card-news { grid-area: card-news; }
-.about { grid-area: about; } */
-
-/* .page__content {
-  background: url('../../images/main-background.jpg');
-  background-repeat: no-repeat;
-  background-size: contain;
-} */

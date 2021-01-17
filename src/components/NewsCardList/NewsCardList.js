@@ -2,7 +2,7 @@ import React, { useState} from 'react';
 import './NewsCardList.css';
 import { initialCards as cards } from '../../utils/data';
 import Card from '../Card/Card';
-import SubmitButton from '../SubmitButton/SubmitButton';
+import Button from '../Button/Button';
 
 function NewsCardList ({ isLogin }) {
 
@@ -26,7 +26,7 @@ function NewsCardList ({ isLogin }) {
               isLogin={isLogin}
             />)}
         </ul>
-        <SubmitButton
+        <Button
           modifier={isEntire ? 'card-news__button_hide' : ''}
           name='card-news'
           button='Показать еще'

@@ -3,6 +3,7 @@ import About from '../components/About/About';
 import Header from '../components/Header/Header';
 import Login from '../components/Login/Login';
 import Main from '../components/Main/Main';
+import PopupSuccess from '../components/PopupSuccess/PopupSuccess';
 import Register from '../components/Register/Register';
 import SearchForm from '../components/SearchForm/SearchForm';
 import Wrapper from '../components/Wrapper/Wrapper';
@@ -13,17 +14,24 @@ function MainPage({ isLogin }) {
     window.scrollTo(0, 0)
   }, []);
 
-  const [open, setOpen] = useState(false);
+  //Временная реализация открытия и переключения попапов
+  const [loaderOpen, setLoaderOpen] = useState(false);
   const [isLoginOpen, setIsLoginOpen] = useState(false);
   const [isRegisterOpen, setIsRegisterOpen] = useState(false);
+  const [isSuccessOpen, setIsSuccessOpen] = useState(false);
 
   function handlePopupOpen() {
     setIsLoginOpen(true);
   }
 
+  function handleSuccessOpen() {
+    setIsSuccessOpen(true);
+    setIsRegisterOpen(false)
+  }
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    setOpen(true)
+    setLoaderOpen(true)
   }
 
   function handleTogglePopup() {
@@ -38,7 +46,8 @@ function MainPage({ isLogin }) {
 
   function closeAllPopups() {
     setIsLoginOpen(false);
-    setIsRegisterOpen(false)
+    setIsRegisterOpen(false);
+    setIsSuccessOpen(false);
   }
 
   return (
@@ -54,7 +63,7 @@ function MainPage({ isLogin }) {
         />
       </Wrapper>
       <Main
-        isOpen={open}
+        isOpen={loaderOpen}
         isLogin={isLogin}
       />
       <About />
@@ -67,6 +76,11 @@ function MainPage({ isLogin }) {
         isOpen={isRegisterOpen}
         onClose={closeAllPopups}
         onToggle={handleTogglePopup}
+        onClick={handleSuccessOpen}
+      />
+      <PopupSuccess
+        onClose={closeAllPopups}
+        isOpen={isSuccessOpen}
       />
     </>
   )

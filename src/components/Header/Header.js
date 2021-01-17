@@ -2,7 +2,7 @@ import React from 'react';
 import { Logo, Logout } from '../../images';
 import Navigation from '../Navigation/Navigation';
 import Link from '../NavLink/Link';
-import SubmitButton from '../SubmitButton/SubmitButton';
+import Button from '../Button/Button';
 import './Header.css';
 
 function Header({ onClick, isLogin, theme }) {
@@ -17,7 +17,7 @@ function Header({ onClick, isLogin, theme }) {
       <Navigation
         section='header'
         container={
-          <SubmitButton
+          <Button
             name='header'
             modifier={`header__button_${theme}`}
             onClick={onClick}
@@ -30,7 +30,7 @@ function Header({ onClick, isLogin, theme }) {
               /> :
               null
             }
-          </SubmitButton>
+          </Button>
         }
       >
         <Link

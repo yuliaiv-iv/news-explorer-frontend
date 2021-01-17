@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { CloseBtn } from '../../images';
 import './Popup.css'
 
-function Popup({ onClose, isOpen, children, title, toggle, onToggle }) {
+function Popup({ toggle, onToggle, title, onClose, isOpen, children }) {
 
   function handleEsc(event) {
     if (event.key !== 'Escape') {
@@ -35,9 +35,7 @@ function Popup({ onClose, isOpen, children, title, toggle, onToggle }) {
           onClick={onClose}
         />
         <h3 className='popup__title'>{title}</h3>
-        <form className="popup__form">
-          {children}
-        </form>
+        {children}
         <h4 className='popup__toggle'>или <span className='popup__span' onClick={onToggle}>{toggle}</span></h4>
       </div>
     </section>

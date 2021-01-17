@@ -1,10 +1,17 @@
 import React from 'react';
-import Popup from '../Popup/Popup';
 import FormInput from '../FormInput/FormInput';
-import SubmitButton from '../SubmitButton/SubmitButton';
 import './Register.css'
+import Form from '../Form/Form';
+import Popup from '../Popup/Popup';
 
-function Register({ onClose, isOpen, onToggle }) {
+function Register({onClick, onClose, isOpen, onToggle }) {
+
+  const errorMessage = 'Такой пользователь уже есть';
+
+  
+  function handleSubmit(event) {
+    event.preventDefault();
+}
 
   return (
     <Popup
@@ -13,34 +20,35 @@ function Register({ onClose, isOpen, onToggle }) {
       title='Регистрация'
       toggle='Войти'
       onToggle={onToggle}
-      buttonClass='popup'
     >
-      <FormInput
-        name='email'
-        type='email'
-        label='Email'
-        placeholder='Введите почту'
-      />
-      <FormInput
-        name='password'
-        type='password'
-        label='Пароль'
-        placeholder='Введите пароль'
-      />
-      <FormInput
-        name='name'
-        type='text'
-        label='Имя'
-        placeholder='Введите своё имя'
-        minLength="2"
-        maxLength="20"
-      />
-      <SubmitButton
-        type='submit'
-        name='popup'
+      <Form
         button='Зарегистрироваться'
-      // isDisabled={true}
-      />
+        isError={true}
+        error={errorMessage}
+        onSubmit={handleSubmit}
+        onClick={onClick}
+      >
+        <FormInput
+          name='email'
+          type='email'
+          label='Email'
+          placeholder='Введите почту'
+        />
+        <FormInput
+          name='password'
+          type='password'
+          label='Пароль'
+          placeholder='Введите пароль'
+        />
+        <FormInput
+          name='name'
+          type='text'
+          label='Имя'
+          placeholder='Введите своё имя'
+          minLength="2"
+          maxLength="20"
+        />
+      </Form>
     </Popup>
   )
 }

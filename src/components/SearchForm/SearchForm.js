@@ -1,5 +1,5 @@
 import React from 'react';
-import SubmitButton from '../SubmitButton/SubmitButton';
+import Button from '../Button/Button';
 import './SearchForm.css'
 
 function SearchForm({ onSubmit }) {
@@ -18,7 +18,7 @@ function SearchForm({ onSubmit }) {
             type="text"
           >
           </input>
-          <SubmitButton
+          <Button
             type='submit'
             name='search'
             button='Искать'

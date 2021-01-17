@@ -6,24 +6,4 @@
   width: calc(100% - 104px*2);
   margin: auto;
 }
-/* 
-.main {
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: auto;
-  grid-gap: 80px;
-  grid-template-areas:
-    "search"
-    "preloader"
-    "card-news"
-    "savednews"
-    "about";
-} */
-
-/* .savednews { grid-area: savednews; }
-.search { grid-area: search; }
-.preloader { grid-area: preloader; }
-.card-news { grid-area: card-news; }
-.about { grid-area: about; } */
-
 
