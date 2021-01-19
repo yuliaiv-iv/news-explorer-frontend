@@ -1,5 +1,6 @@
 import React from 'react';
-import Button from '../Button/Button';
+import Form from '../Form/Form';
+import FormInput from '../FormInput/FormInput';
 import './SearchForm.css'
 
 function SearchForm({ onSubmit }) {
@@ -8,25 +9,21 @@ function SearchForm({ onSubmit }) {
       <div className='search__panel'>
         <h1 className='search__title'>Что творится в мире?</h1>
         <h3 className='search__subtitle'>Находите самые свежие статьи на любую тему и сохраняйте в своём личном кабинете.</h3>
-        <form
-          className='search__form'
+        <Form
+          button='Искать'
+          className='search'
           onSubmit={onSubmit}
         >
-          <input
-            className='search__input'
-            placeholder="Введите тему новости"
-            type="text"
-          >
-          </input>
-          <Button
-            type='submit'
-            name='search'
-            button='Искать'
+          <FormInput
+            placeholder='Введите тему новости'
+            type='text'
+            isSearchForm={true}
           />
-        </form>
+        </Form>
       </div>
     </section>
   )
 }
 
 export default SearchForm;
+

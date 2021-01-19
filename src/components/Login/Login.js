@@ -16,6 +16,7 @@ function Login({ onClose, isOpen, onToggle }) {
     >
       <Form
         button='Войти'
+        className='popup'
         isDisabled={true} // реализация неактивной кнопки
       >
         <FormInput

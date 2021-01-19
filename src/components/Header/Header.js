@@ -1,5 +1,6 @@
 import React from 'react';
-import { Logo, Logout } from '../../images';
+import { Logout } from '../Icons/Logout';
+import { Logo } from '../Icons/Logo';
 import Navigation from '../Navigation/Navigation';
 import Link from '../NavLink/Link';
 import Button from '../Button/Button';
@@ -18,7 +19,7 @@ function Header({ onClick, isLogin, theme }) {
         section='header'
         container={
           <Button
-            name='header'
+            className='header'
             modifier={`header__button_${theme}`}
             onClick={onClick}
             button={isLogin ? 'Грета' : 'Авторизоваться'}

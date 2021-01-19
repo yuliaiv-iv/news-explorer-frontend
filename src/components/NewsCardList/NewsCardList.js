@@ -3,6 +3,7 @@ import './NewsCardList.css';
 import { initialCards as cards } from '../../utils/data';
 import Card from '../Card/Card';
 import Button from '../Button/Button';
+import CheckBox from '../CheckBox/CheckBox';
 
 function NewsCardList ({ isLogin }) {
 
@@ -22,13 +23,12 @@ function NewsCardList ({ isLogin }) {
         <ul className='card-news__list'>
           {cards.slice(0, visibleCards).map(card =>
             <Card {...card}
-              popup='Войдите, чтобы сохранять статьи'
               isLogin={isLogin}
             />)}
         </ul>
         <Button
           modifier={isEntire ? 'card-news__button_hide' : ''}
-          name='card-news'
+          className='card-news'
           button='Показать еще'
           onClick={showMoreCards}
         />

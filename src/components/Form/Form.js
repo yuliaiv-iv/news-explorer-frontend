@@ -2,22 +2,22 @@ import React from 'react';
 import Button from '../Button/Button';
 import './Form.css'
 
-function Form({ onClick, onSubmit, isDisabled, error, isError, button, children }) {
+function Form({ className, onClick, onSubmit, isDisabled, error, isError, button, children }) {
 
   return (
     <>
       <form
-        className='popup__form'
+        className={`${className}__form`}
         onSubmit={onSubmit}
         action="#"
         noValidate
         >
         {children}
-        <div className='popup__button-container'>
+        <div className={`${className}__button-container`}>
           {isError ? <span className='popup__error'>{error}</span> : ''}
           <Button
             type='submit'
-            name='popup'
+            className={className}
             button={button}
             onClick={onClick}
             isDisabled={isDisabled}

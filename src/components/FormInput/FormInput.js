@@ -1,18 +1,18 @@
 import React from 'react';
 import './FormInput.css'
 
-function FormInput({ children, name, label, type, placeholder }) {
+function FormInput({ isSearchForm, children, name, label, type, placeholder }) {
 
   return (
     <>
       <label
-        className='popup__label'
+        className={isSearchForm ? 'search__lable' : 'popup__label'}
         htmlFor={name}
       >
         {label}
         <input
           type={type}
-          className='popup__input'
+          className={isSearchForm ? 'search__input' : 'popup__input'}
           id={name}
           name={name}
           placeholder={placeholder}

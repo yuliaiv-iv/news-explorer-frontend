@@ -23,6 +23,7 @@ function Register({onClick, onClose, isOpen, onToggle }) {
     >
       <Form
         button='Зарегистрироваться'
+        className='popup'
         isError={true}
         error={errorMessage}
         onSubmit={handleSubmit}

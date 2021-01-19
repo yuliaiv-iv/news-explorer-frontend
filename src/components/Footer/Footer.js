@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './Footer.css';
-import { FaceBook, GitHub } from '../../images';
+// import { FaceBook, GitHub } from '../../images';
 import Navigation from '../Navigation/Navigation';
 import Link from '../NavLink/Link';
 
@@ -12,8 +12,8 @@ function Footer() {
       <Navigation
         section='footer'
         container={<nav className='footer__social'>
-          <a rel='noreferrer'><GitHub /></a>
-          <a rel='noreferrer'><FaceBook /></a>
+          {/* <a rel='noreferrer'><GitHub /></a>
+          <a rel='noreferrer'><FaceBook /></a> */}
         </nav>}
       >
         <Link

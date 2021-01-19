@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { CloseBtn } from '../../images';
+import { CloseBtn } from '../Icons/closebtn';
 import './Popup.css'
 
 function Popup({ toggle, onToggle, title, onClose, isOpen, children }) {

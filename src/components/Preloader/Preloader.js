@@ -1,10 +1,8 @@
 import React from 'react';
-import { NotFound } from '../../images';
+import { NotFound } from '../Icons/not-found';
 import './Preloader.css'
 
 function Preloader({ isOpen, error }) {
-
-
 
   const loaderInfo = error ? 'Ничего не найдено' : '';
   const loaderText = error ?

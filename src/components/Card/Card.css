@@ -77,11 +77,20 @@
   bottom: 24px;
 }
 
-.card__icon {
+.card__button {
   position: absolute;
   top: 24px;
   right: 24px;
-  cursor: pointer;
+  color: #B6BCBF;
+  padding: 0;
+  border-radius: 8px;
+}
+
+.card__icon {
+  vertical-align: top;
+}
+.card__button:hover {
+  color: #1A1B22;
 }
 
 .card__popup {
@@ -99,18 +108,9 @@
   margin: 0;
   visibility: hidden;
 }
-.card__popup_hide {
-  display: none;
+
+.card__button:hover + .card__popup { 
+  visibility: visible; 
 }
-
-.card__icon_bookmark-fill { fill: #2F71E5; stroke: #2F71E5; }
-
-.card__icon:hover .card__icon_trash { fill: #1A1B22; }
-.card__icon:hover .card__icon_bookmark { stroke: #1A1B22; }
-
-
-.card__icon:hover + .card__popup { visibility: visible; };
-
-.card__icon:hover .card__icon-svg_try { fill: red; stroke: red; }
 
 

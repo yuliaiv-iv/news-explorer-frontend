@@ -15,7 +15,6 @@ function SavedNews() {
         </div>
         <ul className='savednews__list'>
           {cards.map(card => <Card {...card}
-            popup='Убрать из сохранённых'
           />)}
         </ul>
       </section>
