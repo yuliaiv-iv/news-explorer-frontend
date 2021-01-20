@@ -11,13 +11,13 @@ function Login({ onClose, isOpen, onToggle }) {
       isOpen={isOpen}
       onClose={onClose}
       title='Вход'
-      toggle='Зарегистрироваться'
+      toggle=' Зарегистрироваться'
       onToggle={onToggle}
     >
       <Form
         button='Войти'
         className='popup'
-        isDisabled={true} // реализация неактивной кнопки
+        isDisabled={true} // временная реализация неактивной кнопки
       >
         <FormInput
           name='email'

@@ -10,12 +10,12 @@
 }
 .card-news__list {
   display: grid;
-  margin: 64px 0px 64px;
+  margin: 0;
   grid-template-columns: repeat(auto-fit, 400px);
   justify-content: center;
   grid-gap: 16px 16px;
+  padding: 62px 0 62px;
   width: 100%;
-  padding: 0;
 }
 
 .card-news__title {

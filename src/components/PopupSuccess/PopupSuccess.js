@@ -8,6 +8,7 @@ function PopupSuccess({isOpen, onClose}) {
     <Popup
       isOpen={isOpen}
       onClose={onClose}
+      isSuccess={true}
       title='Пользователь успешно зарегистрирован!'
       toggle='Войти'
     >

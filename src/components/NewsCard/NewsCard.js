@@ -1,15 +1,17 @@
 import React, { useState, useRef, useEffect } from 'react';
-import './Card.css';
+import './NewsCard.css';
 import { useRouteMatch } from 'react-router-dom';
-import { Trash } from '../Icons/trash';
+import { Trash } from '../Icons/Trash';
 import CheckBox from '../CheckBox/CheckBox';
 import Button from '../Button/Button';
+import ExternalLink from '../ExternalLink/ExternalLink';
 
 
 function Card({ date, source, title, text, image, popup, link }) {
 
   const titleRef = useRef('');
-  const [style, setStyle] = useState({})
+  const [style, setStyle] = useState({});
+  const path = useRouteMatch();
 
   useEffect(() => {
     const height = (titleRef.current && titleRef.current.offsetHeight) || 0;
@@ -20,12 +22,10 @@ function Card({ date, source, title, text, image, popup, link }) {
     }
   }, [titleRef]);
 
-  const path = useRouteMatch();
-
   return (
     <li className='card'>
       {path.path === '/' ?
-        <CheckBox/> :
+        <CheckBox /> :
         <>
           <Button className='card'>
             <Trash />
@@ -36,7 +36,7 @@ function Card({ date, source, title, text, image, popup, link }) {
         </>
       }
       <img className='card__image' src={image} alt={title} />
-      <a className='card__link' href={link} target='_blank' rel='noreferrer'>
+      <ExternalLink section='card' href={link} >
         <div className='card__info'>
           <div className='card__date'>{date}</div>
           <div>
@@ -45,7 +45,7 @@ function Card({ date, source, title, text, image, popup, link }) {
           </div>
         </div>
         <h4 className='card__source'>{source}</h4>
-      </a>
+      </ExternalLink>
     </li>
   )
 }

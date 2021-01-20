@@ -1,5 +1,5 @@
 import React from 'react';
-import { NotFound } from '../Icons/not-found';
+import { NotFound } from '../Icons/NotFound';
 import './Preloader.css'
 
 function Preloader({ isOpen, error }) {

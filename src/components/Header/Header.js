@@ -2,18 +2,16 @@ import React from 'react';
 import { Logout } from '../Icons/Logout';
 import { Logo } from '../Icons/Logo';
 import Navigation from '../Navigation/Navigation';
-import Link from '../NavLink/Link';
+import InternalLink from '../InternalLink/InternalLink';
 import Button from '../Button/Button';
 import './Header.css';
 
 function Header({ onClick, isLogin, theme }) {
 
   return (
-    <header className={`header header__border_${theme}`}>
+    <header className={`header header_${theme}`}>
       <div className='header__container'>
       <Logo
-        className='header__logo'
-        pathStyle={`header__logo_${theme}`}
       />
       <Navigation
         section='header'
@@ -27,20 +25,19 @@ function Header({ onClick, isLogin, theme }) {
             {isLogin ?
               <Logout
                 className='header__logout'
-                pathStyle={`header__logout_${theme}`}
               /> :
               null
             }
           </Button>
         }
       >
-        <Link
+        <InternalLink
           section='header'
           theme={theme}
           path='/'
           text='Главная'
         />
-        <Link
+        <InternalLink
           section='header'
           theme={theme}
           path='/saved-news'

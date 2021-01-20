@@ -1,8 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './Footer.css';
-// import { FaceBook, GitHub } from '../../images';
+import { FaceBook } from '../Icons/FaceBook';
+import { GitHub } from '../Icons/Github';
 import Navigation from '../Navigation/Navigation';
-import Link from '../NavLink/Link';
+import InternalLink from '../InternalLink/InternalLink';
+import ExternalLink from '../ExternalLink/ExternalLink';
 
 function Footer() {
 
@@ -11,25 +13,33 @@ function Footer() {
       <p className='footer__copyright'>&copy; 2020 Supersite, Powered by News API</p>
       <Navigation
         section='footer'
-        container={<nav className='footer__social'>
-          {/* <a rel='noreferrer'><GitHub /></a>
-          <a rel='noreferrer'><FaceBook /></a> */}
-        </nav>}
+        container={
+          <nav className='footer__social'>
+            <ExternalLink
+              section='footer'
+            >
+              <GitHub />
+            </ExternalLink>
+            <ExternalLink
+              section='footer'
+            >
+              <FaceBook />
+            </ExternalLink>
+          </nav>
+        }
       >
-        <Link
+        <InternalLink
           theme='light'
           section='footer'
           path='/'
           text='Главная'
         />
-        <a
-          className='link footer__link'
+        <ExternalLink
           href='https://praktikum.yandex.ru'
-          target='_blank'
-          rel='noreferrer'
+          section='footer'
         >
           Яндекс.Практикум
-        </a>
+        </ExternalLink>
       </Navigation>
     </footer>
   )

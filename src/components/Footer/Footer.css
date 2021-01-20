@@ -1,8 +1,8 @@
 .footer {
   display: flex;
   justify-content: space-between;
-  width: 100%;
-  align-items: center;
+  width: calc(100% - 104px*2);
+  margin: auto;
 }
 
 .footer__copyright {
@@ -12,6 +12,7 @@
   font-size: 16px;
   line-height: 1.37;
   color: #B6BCBF;
+  align-self: center;
 }
 
 .footer__link {
@@ -19,8 +20,13 @@
   color: #1A1B22;
 }
 
+.footer__link:last-of-type {
+  margin-right: 0;
+}
+
 .footer__social {
-  max-width: 70px;
+  min-width: 70px;
   display: flex;
   justify-content: space-between;
+  margin-left: 40px;
 }

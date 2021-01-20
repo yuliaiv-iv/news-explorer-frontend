@@ -1,9 +1,8 @@
 import React, { useState} from 'react';
 import './NewsCardList.css';
 import { initialCards as cards } from '../../utils/data';
-import Card from '../Card/Card';
+import NewsCard from '../NewsCard/NewsCard';
 import Button from '../Button/Button';
-import CheckBox from '../CheckBox/CheckBox';
 
 function NewsCardList ({ isLogin }) {
 
@@ -22,7 +21,7 @@ function NewsCardList ({ isLogin }) {
         <h3 className='card-news__title'>Результаты поиска</h3>
         <ul className='card-news__list'>
           {cards.slice(0, visibleCards).map(card =>
-            <Card {...card}
+            <NewsCard {...card}
               isLogin={isLogin}
             />)}
         </ul>

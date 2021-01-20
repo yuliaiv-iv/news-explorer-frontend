@@ -1,10 +1,10 @@
 import React from 'react';
-import './Link.css';
+import './InternalLink.css';
 import { NavLink } from 'react-router-dom';
 
 
 
-function Link({ path, section, theme, text }) {
+function InternalLink({ path, section, theme, text }) {
   return (
     <NavLink
       exact to={path}
@@ -16,6 +16,6 @@ function Link({ path, section, theme, text }) {
   )
 }
 
-export default Link;
+export default InternalLink;
 
 

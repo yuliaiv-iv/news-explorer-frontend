@@ -1,4 +1,4 @@
-export const Trash = ({ className }) => {
+export const Trash = () => {
   return (
     <svg
       className='card__icon'

@@ -18,7 +18,7 @@ function Register({onClick, onClose, isOpen, onToggle }) {
       isOpen={isOpen}
       onClose={onClose}
       title='Регистрация'
-      toggle='Войти'
+      toggle=' Войти'
       onToggle={onToggle}
     >
       <Form

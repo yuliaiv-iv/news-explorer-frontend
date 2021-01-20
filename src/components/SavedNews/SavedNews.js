@@ -1,7 +1,7 @@
 import React from 'react';
 import './SavedNews.css';
 import { initialCards as cards } from '../../utils/data';
-import Card from '../Card/Card';
+import NewsCard from '../NewsCard/NewsCard';
 
 function SavedNews() {
 
@@ -14,7 +14,7 @@ function SavedNews() {
           <p className='savednews__description'>По ключевым словам: <span className='savednews__description_span'>Природа, Тайга </span>и <span className='info__description_span'>2-м другим</span></p>
         </div>
         <ul className='savednews__list'>
-          {cards.map(card => <Card {...card}
+          {cards.map(card => <NewsCard {...card}
           />)}
         </ul>
       </section>

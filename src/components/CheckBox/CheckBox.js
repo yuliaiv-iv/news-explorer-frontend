@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Bookmark } from '../Icons/bookmark';
+import { Bookmark } from '../Icons/Bookmark';
 import './CheckBox.css';
 
 function CheckBox() {

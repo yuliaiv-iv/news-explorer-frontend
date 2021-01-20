@@ -60,6 +60,7 @@
 
 .card__link {
   text-decoration: none;
+  margin: 0;
 }
 
 .card__source {

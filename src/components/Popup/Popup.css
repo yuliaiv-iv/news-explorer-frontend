@@ -37,11 +37,12 @@
   left: 100%;
   bottom: 100%;
   border: 0;
+  cursor: pointer;
 }
 
 .popup__title {
   margin: 0;
-  padding: 34px 36px 22px;
+  padding: 34px 36px 0;
   font-family: 'Roboto';
   font-weight: 900;
   font-size: 24px;
@@ -50,7 +51,7 @@
 }
 
 .popup__form {
-  padding: 0 36px 0;
+  padding: 22px 36px 16px;
 }
 
 .popup__label {
@@ -98,16 +99,23 @@
   line-height: 1.25;
 }
 
-
-.popup__toggle {
+.popup__span {
   margin: 0;
   font-family: 'Inter';
   font-weight: 400;
   font-size: 14px;
   line-height: 1.2;
   text-align: center;
-  margin-top: 16px;
   margin-bottom: 28px;
+}
+
+.popup__span_success {
+  margin: 14px 36px 51px;
+  font-family: 'Inter';
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.2;
+  color: #2F71E5;
 }
 
 .popup__button-container {
@@ -154,7 +162,7 @@
   background-color: #2A65CC;
 }
 
-.popup__span {
+.popup__redirect {
   color: #2F71E5;
   cursor: pointer;
 }
