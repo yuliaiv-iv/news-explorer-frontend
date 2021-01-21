@@ -7,7 +7,7 @@ import Button from '../Button/Button';
 import ExternalLink from '../ExternalLink/ExternalLink';
 
 
-function Card({ date, source, title, text, image, popup, link }) {
+function Card({ date, source, title, text, image, keyword, link }) {
 
   const titleRef = useRef('');
   const [style, setStyle] = useState({});
@@ -27,6 +27,7 @@ function Card({ date, source, title, text, image, popup, link }) {
       {path.path === '/' ?
         <CheckBox /> :
         <>
+        <p className='card__keyword'>{keyword}</p>
           <Button className='card'>
             <Trash />
           </Button>
@@ -36,7 +37,7 @@ function Card({ date, source, title, text, image, popup, link }) {
         </>
       }
       <img className='card__image' src={image} alt={title} />
-      <ExternalLink section='card' href={link} >
+      <ExternalLink section='card' href={link}>
         <div className='card__info'>
           <div className='card__date'>{date}</div>
           <div>

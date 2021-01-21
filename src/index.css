@@ -6,7 +6,7 @@ body {
   min-width: 320px;
   margin: 0 auto;
   box-sizing: border-box;
-  font-family: 'Roboto', 'Inter', Arial, sans-serif;
+  font-family: 'Roboto', 'Inter', 'Arial', sans-serif;
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
@@ -15,9 +15,9 @@ body {
   -moz-text-size-adjust: 100%;
 }
 
-* {
+/* * {
   outline-style: solid;
   outline-width: 1px;
   outline-color: red;
-}
+} */
 

@@ -1,6 +1,7 @@
 export const FaceBook = () => {
   return (
     <svg
+      aria-label='перейти на профиль в фейсбуке'
       width={20}
       height={20}
       viewBox="0 0 20 20"

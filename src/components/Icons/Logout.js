@@ -1,6 +1,7 @@
 export const Logout = ({ className }) => {
   return (
     <svg
+      aria-label='выйти'
       className={className}
       width={18}
       height={16}

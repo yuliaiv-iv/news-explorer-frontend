@@ -21,6 +21,11 @@
   color: #B6BCBF;
   font-weight: 500;
 }
+.header__link:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px #347EFF;
+  border-radius: 5px;
+}
 
 .header__link_dark {
   color: #1A1B22;
@@ -30,7 +35,7 @@
 .header__active {
   color: #FFFFFF;
   border-bottom: 3px solid #FFFFFF;
-  padding: 30px 0 26px 0;
+  padding: 0 0 26px 0;
 }
 
 .header__active_dark {
@@ -44,6 +49,11 @@
   border: 1px solid #FFFFFF;
   background: none;
   padding: 12px 18px 12px;
+}
+
+.header__button:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px #347EFF;
 }
 
 .header__logout {

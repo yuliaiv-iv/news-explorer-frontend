@@ -30,7 +30,6 @@ function Popup({ isSuccess, toggle, onToggle, title, onClose, isOpen, children }
       <div className='popup__container'>
         <Closebtn
           type='button'
-          aria-label='закрыть модальное окно'
           className='popup__close'
           onClose={onClose}
         />

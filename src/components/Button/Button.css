@@ -6,7 +6,7 @@
   cursor: pointer;
   font-size: 18px;
   line-height: 1.33;
-  font-family: 'Roboto';
+  font-family: 'Roboto', 'Arial', 'Inter';
   font-weight: 500;
   color: #FFFFFF;
 }

@@ -4,11 +4,12 @@ import Form from '../Form/Form';
 import './Login.css'
 import Popup from '../Popup/Popup';
 
-function Login({ onClose, isOpen, onToggle }) {
+function Login({ onClick, onClose, isOpen, onToggle }) {
 
   return (
     <Popup
       isOpen={isOpen}
+      onClick={onClick}
       onClose={onClose}
       title='Вход'
       toggle=' Зарегистрироваться'

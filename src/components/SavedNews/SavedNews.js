@@ -13,10 +13,12 @@ function SavedNews() {
           <h4 className='savednews__subtitle'>Грета, у вас 5 сохранённых статей</h4>
           <p className='savednews__description'>По ключевым словам: <span className='savednews__description_span'>Природа, Тайга </span>и <span className='info__description_span'>2-м другим</span></p>
         </div>
-        <ul className='savednews__list'>
-          {cards.map(card => <NewsCard {...card}
-          />)}
-        </ul>
+        <div className='savednews__container'>
+          <ul className='savednews__list'>
+            {cards.map(card => <NewsCard {...card}
+            />)}
+          </ul>
+        </div>
       </section>
     </>
   )

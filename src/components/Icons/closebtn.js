@@ -1,6 +1,7 @@
 export const Closebtn = ({ onClose, className }) => {
   return (
     <svg
+      aria-label='закрыть модальное окно'
       className={className}
       onClick={onClose}
       width={40}

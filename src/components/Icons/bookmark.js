@@ -1,6 +1,7 @@
 export const Bookmark = ({ isChecked }) => {
   return (
     <svg
+      aria-label='сохранить статью'
       width={40}
       height={40}
       viewBox="0 0 40 40"

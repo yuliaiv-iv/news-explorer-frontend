@@ -1,6 +1,7 @@
 export const Trash = () => {
   return (
     <svg
+      aria-label='удалить статью'
       className='card__icon'
       width={40}
       height={40}

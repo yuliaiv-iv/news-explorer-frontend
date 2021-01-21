@@ -43,7 +43,7 @@
 .popup__title {
   margin: 0;
   padding: 34px 36px 0;
-  font-family: 'Roboto';
+  font-family: 'Roboto', 'Arial', 'Inter';
   font-weight: 900;
   font-size: 24px;
   line-height: 1.16;
@@ -58,7 +58,7 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  font-family: 'Inter';
+  font-family: 'Inter', 'Roboto', 'Arial';
   color: #2F71E5;
   font-weight: 400;
   font-size: 12px;
@@ -76,7 +76,7 @@
   width: 100%;
   box-sizing: border-box;
   border-bottom: 1px solid rgba(0,0,0,.2);
-  font-family: 'Inter';
+  font-family: 'Inter', 'Roboto', 'Arial';
   font-weight: 400;
   font-size: 14px;
   line-height: 1.2;
@@ -93,7 +93,7 @@
   left: 0;
   top: 49px;
   color:	#FF0000;
-  font-family: 'Inter';
+  font-family: 'Inter', 'Roboto', 'Arial';
   font-weight: 400;
   font-size: 12px;
   line-height: 1.25;
@@ -101,7 +101,7 @@
 
 .popup__span {
   margin: 0;
-  font-family: 'Inter';
+  font-family: 'Inter', 'Roboto', 'Arial';
   font-weight: 400;
   font-size: 14px;
   line-height: 1.2;
@@ -111,7 +111,7 @@
 
 .popup__span_success {
   margin: 14px 36px 51px;
-  font-family: 'Inter';
+  font-family: 'Inter', 'Roboto', 'Arial';
   font-weight: 400;
   font-size: 18px;
   line-height: 1.2;
@@ -132,7 +132,7 @@
 }
 
 .popup__error {
-  font-family: 'Inter';
+  font-family: 'Inter', 'Roboto', 'Arial';
   font-weight: 400;
   font-size: 12px;
   line-height: 1.25;

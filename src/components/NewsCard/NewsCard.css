@@ -25,7 +25,7 @@
 }
 
 .card__date {
-  font-family: 'Source Sans Pro';
+  font-family: 'Source-Slab-Pro', 'Arial', 'Inter';
   font-weight: 400;
   font-size: 18px;
   line-height: 1.33;
@@ -34,7 +34,7 @@
 
 .card__title {
   margin: 12px 0 16px;
-  font-family: 'Roboto Slab';
+  font-family: 'Roboto-Slab', 'Arial', 'Inter';
   font-weight: 400;
   font-size: 26px;
   line-height: 1.15;
@@ -47,7 +47,7 @@
 
 .card__text {
   margin: 0;
-  font-family: 'Roboto';
+  font-family: 'Roboto', 'Arial', 'Inter';
   font-weight: 400;
   font-size: 16px;
   line-height: 1.37;
@@ -65,7 +65,7 @@
 
 .card__source {
   margin: 0;
-  font-family: 'Roboto Slab';
+  font-family: 'Roboto-Slab', 'Arial', 'Inter';
   font-style: normal;
   font-weight: 900;
   font-size: 16px;
@@ -78,6 +78,24 @@
   bottom: 24px;
 }
 
+.card__keyword {
+  position: absolute;
+  top: 24px;
+  left: 24px;
+  font-family: 'Roboto', 'Arial', 'Inter';
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.71;
+  color: #000000;
+  background: white;
+  padding: 8px 12px 8px;
+  margin: 0;
+  border-radius: 10px;
+  max-width: 135px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
 .card__button {
   position: absolute;
   top: 24px;
@@ -85,18 +103,47 @@
   color: #B6BCBF;
   padding: 0;
   border-radius: 8px;
+  height: 40px;
 }
 
-.card__icon {
-  vertical-align: top;
-}
 .card__button:hover {
   color: #1A1B22;
 }
 
+.card__checkbox {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  cursor: pointer;
+  color: #B6BCBF;
+}
+
+.card__checkbox:hover {
+  color: #1A1B22;
+}
+
+.card__checkbox-input {
+  position: absolute;
+  top: 0;
+  right: 0;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+.card__checkbox-span {
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+/* .card__icon {
+  vertical-align: top;
+} */
+
 .card__popup {
-  font-family: 'Roboto';
-  font-weight: 600;
+  font-family: 'Roboto', 'Arial', 'Inter';
+  font-weight: 500;
   font-size: 10px;
   line-height: 12px;
   color: #000000;
@@ -114,4 +161,11 @@
   visibility: visible; 
 }
 
+.card__checkbox:hover + .card__popup { 
+  visibility: visible; 
+}
+
+.card__checkbox-input:checked + .card__checkbox-span {
+	color: #2F71E5;
+}
 

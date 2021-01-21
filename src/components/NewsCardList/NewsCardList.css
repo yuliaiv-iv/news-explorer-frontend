@@ -1,6 +1,4 @@
 .card-news {
-  margin: auto;
-  width: calc(100% - 104px*2);
   padding: 80px 0 80px;
 }
 
@@ -11,16 +9,15 @@
 .card-news__list {
   display: grid;
   margin: 0;
-  grid-template-columns: repeat(auto-fit, 400px);
+  grid-template-columns: repeat(3, 1fr);
   justify-content: center;
   grid-gap: 16px 16px;
   padding: 62px 0 62px;
-  width: 100%;
 }
 
 .card-news__title {
   margin: 0;
-  font-family: 'Roboto Slab';
+  font-family: 'Roboto-Slab', 'Arial', 'Inter';
   font-weight: 400;
   font-size: 40px;
   line-height: 1.15;
@@ -35,6 +32,7 @@
   color: #1A1B22;
   width: 80%;
   align-self: center;
+  border-radius: 80px;
 }
 
 .card-news__button:hover {
