@@ -2,6 +2,7 @@
   position: fixed;
   top: 0;
   left: 0;
+  z-index: 10;
   width: 100%;
   height: 100%;
   background: rgba(0, 0, 0, .5);
@@ -141,6 +142,8 @@
   top: 20%;
   left: 50%;
   transform: translate(-50%, 0%);
+  width: 100%;
+  text-align: center;
 }
 
 .popup__button:hover {
@@ -165,4 +168,31 @@
 .popup__redirect {
   color: #2F71E5;
   cursor: pointer;
+}
+
+@media screen and (max-width: 1050px) {
+  .popup__button {
+    font-size: 18px;
+    line-height: 1.33;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .popup__container {
+    height: 100%;
+    margin-top: 56px;
+    max-width: 100%;
+  }
+  .popup {
+    background: none;
+  }
+  .popup__form {
+    padding: 22px 16px 16px;
+  }
+  .popup__title {
+    padding: 16px 16px 0;
+  }
+  .popup__span_success {
+    margin: 16px 16px 0;
+  }
 }

@@ -1,6 +1,7 @@
 export const Logo = () => {
   return (
     <svg
+      className='header__logo'
       width={137}
       height={21}
       viewBox="0 0 137 21"

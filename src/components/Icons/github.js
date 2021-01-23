@@ -1,6 +1,7 @@
 export const GitHub = () => {
   return (
     <svg
+      className='footer__icon'
       aria-label='перейти на профиль в github'
       width={22}
       height={21}

@@ -27,11 +27,11 @@ function Card({ date, source, title, text, image, keyword, link }) {
       {path.path === '/' ?
         <CheckBox /> :
         <>
-        <p className='card__keyword'>{keyword}</p>
+          <p className='card__keyword'>{keyword}</p>
           <Button className='card'>
             <Trash />
           </Button>
-          <p className='card__popup'>
+          <p className='card__popup card__popup_trash'>
             Убрать из сохранённых
           </p>
         </>
@@ -39,13 +39,11 @@ function Card({ date, source, title, text, image, keyword, link }) {
       <img className='card__image' src={image} alt={title} />
       <ExternalLink section='card' href={link}>
         <div className='card__info'>
-          <div className='card__date'>{date}</div>
-          <div>
+            <div className='card__date'>{date}</div>
             <h2 className='card__title' ref={titleRef}>{title}</h2>
             <p className='card__text' style={style}>{text}</p>
           </div>
-        </div>
-        <h4 className='card__source'>{source}</h4>
+          <h4 className='card__source'>{source}</h4>
       </ExternalLink>
     </li>
   )

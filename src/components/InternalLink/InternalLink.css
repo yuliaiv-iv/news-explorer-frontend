@@ -6,3 +6,11 @@
   line-height: 1.33;
   margin-right: 32px;
 }
+
+@media screen and (max-width: 1050px) {
+  .link {
+    font-size: 16px;
+    line-height: 1.5;
+    margin-right: 16px;
+  }
+}
