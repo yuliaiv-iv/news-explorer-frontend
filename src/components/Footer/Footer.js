@@ -1,7 +1,7 @@
 import React from 'react';
 import './Footer.css';
 import { FaceBook } from '../Icons/FaceBook';
-import { GitHub } from '../Icons/Github';
+import { GitHub } from '../Icons/GitHub';
 import Navigation from '../Navigation/Navigation';
 import InternalLink from '../InternalLink/InternalLink';
 import ExternalLink from '../ExternalLink/ExternalLink';

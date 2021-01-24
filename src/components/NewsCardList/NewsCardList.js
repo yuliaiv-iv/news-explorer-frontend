@@ -11,6 +11,7 @@ function NewsCardList ({ isLogin }) {
   const showMoreCards = () => {
     setVisibleCards((prevValue) => prevValue + 3);
   }
+
   const isEntire = visibleCards >= cards.length;
 
   return (
