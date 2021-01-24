@@ -39,6 +39,7 @@
   bottom: 100%;
   border: 0;
   cursor: pointer;
+  color: #fff;
 }
 
 .popup__title {
@@ -177,7 +178,7 @@
   }
 }
 
-@media screen and (max-width: 550px) {
+@media screen and (max-width: 650px) {
   .popup__container {
     height: 100%;
     margin-top: 56px;

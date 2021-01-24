@@ -45,5 +45,3 @@ function Login({ onClick, onClose, isOpen, onToggle }) {
 
 export default Login;
 
-// button='Войти'
-// isDisabled={true} // реализация неактивной кнопки

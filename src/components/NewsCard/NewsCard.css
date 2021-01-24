@@ -11,7 +11,7 @@
 }
 
 .card:hover {
-  box-shadow: 0px 0px 58px rgba(14, 26, 57, 0.2);
+  box-shadow: 0px 20px 58px rgba(14, 26, 57, 0.1);
 }
 
 .card__image {
@@ -225,6 +225,9 @@
   .card__source {
     left: 16px;
     bottom: 16px;
+  }
+  .card__checkbox:hover + .card__popup { 
+    visibility: hidden; 
   }
 }
 

@@ -17,11 +17,13 @@ function Footer() {
           <nav className='footer__social'>
             <ExternalLink
               section='footer'
+              href='https://github.com/yuliaiv-iv'
             >
               <GitHub />
             </ExternalLink>
             <ExternalLink
               section='footer'
+              href='https://github.com/yuliaiv-iv'
             >
               <FaceBook />
             </ExternalLink>

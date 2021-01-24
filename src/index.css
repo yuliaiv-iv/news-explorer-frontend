@@ -15,9 +15,4 @@ body {
   -moz-text-size-adjust: 100%;
 }
 
-* {
-  outline-style: solid;
-  outline-width: 1px;
-  outline-color: red;
-}
 

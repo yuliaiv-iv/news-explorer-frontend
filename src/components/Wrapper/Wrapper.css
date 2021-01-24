@@ -28,16 +28,3 @@
   }
 }
 
-@media screen and (max-width: 550px) {
-  .header__wrapper.header__nav_open::before {
-      /* content: '';
-      background-color: #2a2c2f;
-      opacity: 0.3;
-      position: fixed;
-      top: 0;
-      left: 0;
-      bottom: 0;
-      right: 0;
-      z-index: 12; */
-  }
-}
