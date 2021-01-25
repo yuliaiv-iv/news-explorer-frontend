@@ -136,7 +136,7 @@
     height: 230px;
     background: #1A1B22;
     border-radius: 0 0 16px 16px;
-    box-shadow: 0 100vh 0 100vh rgba(0 0 0/.5);
+    box-shadow: 0 200vh 0 200vh rgba(0 0 0/.5);
     visibility: hidden;
   }
   .header__close {

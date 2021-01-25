@@ -13,7 +13,8 @@ function NewsCardList ({ isLogin }) {
   }
 
   const isEntire = visibleCards >= cards.length;
-
+  let age = 18;
+console.log(typeof age)
   return (
 
     <section className='card-news'>
