@@ -39,8 +39,8 @@
 .search__input {
   height: 64px;
   border: 0;
-  width: calc(100% - 50px);
-  padding: 0 24px 0;
+  width: calc(100% - 24px);
+  padding: 0 0 0 24px;
   font-size: 16px;
   line-height: 1.37;
   font-family: 'Roboto', 'Arial', 'Inter';
@@ -125,7 +125,5 @@
   }
   .search__input {
     margin-bottom: 16px;
-    padding-left: 0;
-    width: 100%;
   }
 }
