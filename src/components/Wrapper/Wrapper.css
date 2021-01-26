@@ -1,0 +1,30 @@
+.header__wrapper {
+  background: url('../../images/main-background.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.main__wrapper {
+  margin: auto;
+  width: calc(100% - 104px*2);
+}
+
+@media screen and (max-width: 1280px) {
+  .main__wrapper {
+    width: calc(100% - 80px*2);
+  }
+}
+
+@media screen and (max-width: 1120px) {
+  .main__wrapper {
+    width: calc(100% - 40px*2);
+  }
+}
+
+@media screen and (max-width: 630px) {
+  .main__wrapper {
+    width: calc(100% - 16px*2);
+  }
+}
+

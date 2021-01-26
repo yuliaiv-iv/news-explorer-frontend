@@ -1,0 +1,19 @@
+.button {
+  border-radius: 100px;
+  border: none;
+  box-sizing: content-box;
+  outline: none;
+  cursor: pointer;
+  font-size: 18px;
+  line-height: 1.33;
+  font-family: 'Roboto', 'Arial', 'Inter';
+  font-weight: 500;
+  color: #FFFFFF;
+}
+
+@media screen and (max-width: 1050px) {
+  .button {
+    font-size: 16px;
+    line-height: 1.5;
+  }
+}

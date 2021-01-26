@@ -1,0 +1,12 @@
+.nav {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  height: 80px;
+}
+
+@media screen and (max-width: 1050px) {
+  .nav  {
+    height: 66px;
+  }
+}
