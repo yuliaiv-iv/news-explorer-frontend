@@ -1,10 +1,29 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import FormInput from '../FormInput/FormInput';
 import Form from '../Form/Form';
 import './Login.css'
 import Popup from '../Popup/Popup';
+import useForm from '../../hooks/useForm'
 
 function Login({ onClick, onClose, isOpen, onToggle }) {
+
+  const {
+    handleInputChange,
+    handleSubmit,
+    values,
+    validationError,
+    isFormValid,
+    setValidationError,
+    setValues,
+    setIsValid,
+    isValid
+  } = useForm();
+
+  useEffect(() => {
+    setValidationError({ email: '', password: '' });
+    setValues({email: '', password: ''})
+    setIsValid({ email: false, password: false })
+  }, [isOpen])
 
   return (
     <Popup
@@ -18,25 +37,30 @@ function Login({ onClick, onClose, isOpen, onToggle }) {
       <Form
         button='Войти'
         className='popup'
-        isDisabled={true} // временная реализация неактивной кнопки
+        onSubmit={handleSubmit}
+        isDisabled={!isFormValid}
       >
         <FormInput
           name='email'
           type='email'
           label='Email'
           placeholder='Введите почту'
+          value={values.email}
+          onChange={handleInputChange}
+          isValid={isValid.email}
+          error={validationError.email}
         >
-          <span
-            className='popup__input-error'
-          >
-            Неправильный формат email
-        </span>
         </FormInput>
         <FormInput
           name='password'
           type='password'
           label='Пароль'
+          minLength='3'
           placeholder='Введите пароль'
+          value={values.password}
+          onChange={handleInputChange}
+          error={validationError.password}
+          isValid={isValid.password}
         />
       </Form>
     </Popup>

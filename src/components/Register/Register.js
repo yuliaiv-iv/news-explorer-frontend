@@ -1,17 +1,31 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import FormInput from '../FormInput/FormInput';
 import './Register.css'
 import Form from '../Form/Form';
 import Popup from '../Popup/Popup';
+import useForm from '../../hooks/useForm'
 
-function Register({onClick, onClose, isOpen, onToggle }) {
+function Register({ onClose, isOpen, onToggle }) {
 
   const errorMessage = 'Такой пользователь уже есть';
 
-  
-  function handleSubmit(event) {
-    event.preventDefault();
-}
+  const {
+    handleInputChange,
+    handleSubmit,
+    values,
+    validationError,
+    isFormValid,
+    setValidationError,
+    setValues,
+    setIsValid,
+    isValid
+  } = useForm();
+
+  useEffect(() => {
+    setValidationError({ email: '', password: '', name: '' });
+    setValues({email: '', password: '', name: ''})
+    setIsValid({ email: false, password: false, name: false })
+  }, [isOpen])
 
   return (
     <Popup
@@ -24,30 +38,43 @@ function Register({onClick, onClose, isOpen, onToggle }) {
       <Form
         button='Зарегистрироваться'
         className='popup'
-        isError={true}
-        error={errorMessage}
+        // isError={true}
+        // error={errorMessage}
         onSubmit={handleSubmit}
-        onClick={onClick}
+        isDisabled={!isFormValid}
       >
         <FormInput
           name='email'
           type='email'
           label='Email'
           placeholder='Введите почту'
+          value={values.email}
+          onChange={handleInputChange}
+          isValid={isValid.email}
+          error={validationError.email}
         />
         <FormInput
           name='password'
           type='password'
           label='Пароль'
+          minLength='3'
           placeholder='Введите пароль'
+          value={values.password}
+          onChange={handleInputChange}
+          error={validationError.password}
+          isValid={isValid.password}
         />
         <FormInput
           name='name'
           type='text'
           label='Имя'
           placeholder='Введите своё имя'
-          minLength="2"
-          maxLength="20"
+          minLength='2'
+          maxLength='20'
+          value={values.name}
+          onChange={handleInputChange}
+          error={validationError.name}
+          isValid={isValid.name}
         />
       </Form>
     </Popup>

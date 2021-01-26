@@ -1,7 +1,20 @@
 import React from 'react';
 import './FormInput.css'
 
-function FormInput({ isSearchForm, children, name, label, type, placeholder }) {
+function FormInput({
+  maxLength,
+  minLength,
+  error,
+  isSearchForm,
+  children,
+  name,
+  label,
+  type,
+  placeholder,
+  onChange,
+  isValid,
+  value
+}) {
 
   return (
     <>
@@ -13,17 +26,20 @@ function FormInput({ isSearchForm, children, name, label, type, placeholder }) {
         <input
           type={type}
           className={isSearchForm ? 'search__input' : 'popup__input'}
-          id={name}
+          value={value}
           name={name}
+          minLength={minLength}
+          maxLength={maxLength}
           placeholder={placeholder}
+          onChange={onChange}
           required
         />
         {children}
-        {/* <span
-          className='popup__input-error'
+        <span
+          className={isValid ? '' : 'popup__input-error'}
         >
-          Неправильный формат email
-        </span> */}
+          {error}
+        </span>
       </label>
     </>
   )
