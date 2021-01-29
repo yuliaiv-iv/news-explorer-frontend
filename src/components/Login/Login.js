@@ -5,7 +5,7 @@ import './Login.css'
 import Popup from '../Popup/Popup';
 import useForm from '../../hooks/useForm'
 
-function Login({ onClick, onClose, isOpen, onToggle }) {
+function Login({ onClick, onClose, isOpen, onToggle, onLoggin }) {
 
   const {
     handleInputChange,
@@ -17,13 +17,18 @@ function Login({ onClick, onClose, isOpen, onToggle }) {
     setValues,
     setIsValid,
     isValid
-  } = useForm();
+  } = useForm(submitForm);
 
   useEffect(() => {
     setValidationError({ email: '', password: '' });
     setValues({email: '', password: ''})
     setIsValid({ email: false, password: false })
   }, [isOpen])
+
+  function submitForm(e) {
+    const { email, password, name } = values;
+    onLoggin(email, password, name);
+  }
 
   return (
     <Popup
@@ -55,7 +60,7 @@ function Login({ onClick, onClose, isOpen, onToggle }) {
           name='password'
           type='password'
           label='Пароль'
-          minLength='3'
+          minLength='8'
           placeholder='Введите пароль'
           value={values.password}
           onChange={handleInputChange}

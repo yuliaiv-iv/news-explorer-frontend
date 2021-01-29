@@ -3,7 +3,7 @@ import Form from '../Form/Form';
 import FormInput from '../FormInput/FormInput';
 import './SearchForm.css'
 
-function SearchForm({ onSubmit }) {
+function SearchForm({ onSubmit, onChange }) {
   return (
     <section className='search'>
       <div className='search__panel'>
@@ -18,6 +18,8 @@ function SearchForm({ onSubmit }) {
             placeholder='Введите тему новости'
             type='text'
             isSearchForm={true}
+            onChange={onChange}
+            // value={inputValue}
           />
         </Form>
       </div>

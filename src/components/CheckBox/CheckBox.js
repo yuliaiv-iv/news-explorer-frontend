@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Bookmark } from '../Icons/Bookmark';
 import './CheckBox.css';
 
-function CheckBox() {
+function CheckBox({ onClick }) {
 
   const [isActive, setIsActive] = useState(false);
 
@@ -12,7 +12,7 @@ function CheckBox() {
 
   return (
     <>
-      <label className='card__checkbox' onChange={handleChecked} checked>
+      <label className='card__checkbox' onChange={handleChecked} onClick={onClick} checked>
         <input className='card__checkbox-input'
           type='checkbox' />
         <span className='card__checkbox-span'>

@@ -7,7 +7,7 @@ import Button from '../Button/Button';
 import ExternalLink from '../ExternalLink/ExternalLink';
 
 
-function Card({ date, source, title, text, image, keyword, link }) {
+function Card({ article, onClick }) {
 
   const titleRef = useRef('');
   const [style, setStyle] = useState({});
@@ -22,12 +22,15 @@ function Card({ date, source, title, text, image, keyword, link }) {
     }
   }, [titleRef]);
 
+
   return (
     <li className='card'>
       {path.path === '/' ?
-        <CheckBox /> :
+        <CheckBox 
+        onClick={onClick}
+        /> :
         <>
-          <p className='card__keyword'>{keyword}</p>
+          {/* <p className='card__keyword'>{keyword}</p> */}
           <Button className='card'>
             <Trash />
           </Button>
@@ -36,14 +39,14 @@ function Card({ date, source, title, text, image, keyword, link }) {
           </p>
         </>
       }
-      <img className='card__image' src={image} alt={title} />
-      <ExternalLink section='card' href={link}>
+      <img className='card__image' src={article.urlToImage} alt={article.title} />
+      <ExternalLink section='card' href={article.url}>
         <div className='card__info'>
-            <div className='card__date'>{date}</div>
-            <h2 className='card__title' ref={titleRef}>{title}</h2>
-            <p className='card__text' style={style}>{text}</p>
-          </div>
-          <h4 className='card__source'>{source}</h4>
+          <div className='card__date'>{article.publishedAt}</div>
+          <h2 className='card__title' ref={titleRef}>{article.title}</h2>
+          <p className='card__text' style={style}>{article.description}</p>
+        </div>
+        <h4 className='card__source'>{article.source.name}</h4>
       </ExternalLink>
     </li>
   )
