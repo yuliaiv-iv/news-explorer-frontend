@@ -7,7 +7,7 @@ import Button from '../Button/Button';
 import ExternalLink from '../ExternalLink/ExternalLink';
 
 
-function Card({ article, onClick }) {
+function Card({ article, addArticle }) {
 
   const titleRef = useRef('');
   const [style, setStyle] = useState({});
@@ -26,8 +26,7 @@ function Card({ article, onClick }) {
   return (
     <li className='card'>
       {path.path === '/' ?
-        <CheckBox 
-        onClick={onClick}
+        <CheckBox
         /> :
         <>
           {/* <p className='card__keyword'>{keyword}</p> */}

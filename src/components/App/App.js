@@ -13,7 +13,8 @@ function App() {
   const history = useHistory();
   const [currentUser, setCurrentUser] = useState({});
   const [isLogged, setIsLogged] = useState(false);
-  // const [savedArticles, setSavedArticles] = useState([]);
+  const [savedArticles, setSavedArticles] = useState([]);
+
 
   function onSignOut() {
     localStorage.removeItem('token');
@@ -25,8 +26,7 @@ function App() {
     Promise.all([api.getUserData(), api.getArticles()])
       .then(([info, articles]) => {
         setCurrentUser(info);
-        // setSavedArticles(articles)
-        // console.log(articles)
+        setSavedArticles(articles)
       })
       .catch((err) => {
         console.log(err);
@@ -34,42 +34,18 @@ function App() {
   }, [isLogged])
 
 
-  // function handleSaveArticle(article) {
-  //   console.log(article)
-  //   api.postArticles(article)
-  //     .then(result => {
-  //       console.log(result)
+  // const handleSaveArticle = (data) => {
+  //   api.postArticles(data)
+  //     .then((res) => {
+  //       console.log(res)
   //     })
-  //     .catch(err => {
+  //     .catch((err) => {
   //       console.log(err);
-  //     })
-  // }
-
-  const handleSaveArticle = (data) => {
-    api.postArticles(data)
-      .then((res) => {
-        console.log(res)
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
+  //     });
+  // };
 
 
-
-  // const dateNow = new Date(); //now
-  // // const date = dateNow.setDate(2);
-
-  // const newDate = dateNow.setDate(7); 
-
-  // const d = new Date();
-  // d.setDate(15);  
-
-  // console.log(d)
-
-  // console.log(typeof dateNow)
-  // console.log(typeof newDate)
-
+// console.log(savedArticles)
 
   return (
     <CurrentUserContext.Provider value={currentUser}>
@@ -81,7 +57,7 @@ function App() {
             isLogged={isLogged}
             setIsLogged={setIsLogged}
             onSignOut={onSignOut}
-            onClick={handleSaveArticle}
+            // addArticle={handleSaveArticle}
           />
         </Route>
         <ProtectedRoute

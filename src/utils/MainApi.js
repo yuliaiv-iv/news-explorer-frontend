@@ -33,18 +33,18 @@ export class Api {
             .then(this._checkStatus);
     }
 
-    postArticles(newsArticle) {
+    postArticles(data) {
         return fetch(`${this._baseUrl}/articles`, {
             headers: this.getHeader(),
             method: 'POST',
             body: JSON.stringify({
-                keyword: 'newsArticle.keyword',
-                title: newsArticle.title,
-                text: newsArticle.description,
-                date: newsArticle.publishedAt,
-                source: newsArticle.source,
-                link: newsArticle.url,
-                image: newsArticle.urlToImage,
+                keyword: data.keyword,
+                title: data.title,
+                text: data.description,
+                date: data.publishedAt,
+                source: data.source,
+                link: data.url,
+                image: data.urlToImage,
             })
         })
             .then(this._checkStatus);
@@ -62,6 +62,7 @@ export class Api {
 export const api = new Api({
     baseUrl: 'https://api.newsinthecloud.students.nomoredomains.monster',
     headers: {
-        'Content-Type': 'application/json'
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
     }
 }); 

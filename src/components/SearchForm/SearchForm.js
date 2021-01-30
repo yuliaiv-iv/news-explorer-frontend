@@ -1,9 +1,22 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Form from '../Form/Form';
 import FormInput from '../FormInput/FormInput';
 import './SearchForm.css'
+import * as news from '../../utils/NewsApi';
 
-function SearchForm({ onSubmit, onChange }) {
+function SearchForm({ getArticles }) {
+
+  const [keyword, setKeyword] = useState('');
+
+  const handleInputSearch = event => {
+    setKeyword(event.target.value);
+  }
+
+  const handleSearchSubmit = (e) => {
+    e.preventDefault();
+      getArticles(keyword);
+  };
+
   return (
     <section className='search'>
       <div className='search__panel'>
@@ -12,14 +25,14 @@ function SearchForm({ onSubmit, onChange }) {
         <Form
           button='Искать'
           className='search'
-          onSubmit={onSubmit}
+          onSubmit={handleSearchSubmit}
         >
           <FormInput
             placeholder='Введите тему новости'
             type='text'
             isSearchForm={true}
-            onChange={onChange}
-            // value={inputValue}
+            onChange={handleInputSearch}
+            value={keyword}
           />
         </Form>
       </div>

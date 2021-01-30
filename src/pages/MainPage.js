@@ -11,7 +11,7 @@ import * as auth from '../utils/auth';
 import * as news from '../utils/NewsApi';
 import { api } from '../utils/MainApi';
 
-function MainPage({isLogged, setIsLogged, onSignOut, onClick}) {
+function MainPage({ isLogged, setIsLogged, onSignOut, addArticle }) {
 
   useEffect(() => {
     window.scrollTo(0, 0)
@@ -22,41 +22,7 @@ function MainPage({isLogged, setIsLogged, onSignOut, onClick}) {
   const [isLoginOpen, setIsLoginOpen] = useState(false);
   const [isRegisterOpen, setIsRegisterOpen] = useState(false);
   const [isSuccessOpen, setIsSuccessOpen] = useState(false);
-
   const [articles, setArticles] = useState([]);
-  const [query, setQuery] = useState('');
-  const [inputValue, setInputValue] = useState('');
-
-  const getAllArticles = (query) => {
-    setIsLoading(true);
-    news.searchArticles(query)
-      .then((data) => {
-        setArticles(data);
-        console.log(data)
-      })
-      .catch((err) => {
-        console.log(`${err}`);
-      })
-      .finally(() => {
-        setIsLoading(false);
-        setIsHidden(false);
-      })
-  }
-  
-  const handleInputSearch = event => {
-    setInputValue(event.target.value);
-  }
-
-  const handleSubmitSearch = (e) => {
-    e.preventDefault();
-    setQuery(inputValue);
-    getAllArticles(query)
-  }
-
-
-  console.log(query)
-  console.log(inputValue)
-
 
   function handleRegisterSubmit(email, password, name) {
     auth.register(email, password, name)
@@ -137,6 +103,24 @@ function MainPage({isLogged, setIsLogged, onSignOut, onClick}) {
     setIsSuccessOpen(false);
   }
 
+  const getArticles = (keyword) => {
+    setIsLoading(true)
+    news.searchArticles(keyword)
+      .then((data) => {
+        const newArticle = data.map((article) => ({ keyword, ...article }))
+        setArticles(newArticle)
+        localStorage.setItem('arr', JSON.stringify(newArticle))
+      })
+      .catch((err) => {
+        console.log(`${err}`)
+      })
+      .finally(() => {
+        setIsLoading(false)
+        setIsHidden(false)
+      })
+  };
+
+  console.log(articles)
   return (
     <>
       <Wrapper section='header'>
@@ -147,9 +131,7 @@ function MainPage({isLogged, setIsLogged, onSignOut, onClick}) {
           theme='light'
         />
         <SearchForm
-          onSubmit={handleSubmitSearch}
-          onChange={handleInputSearch}
-          value={inputValue}
+          getArticles={getArticles}
         />
       </Wrapper>
       <Main
@@ -157,7 +139,6 @@ function MainPage({isLogged, setIsLogged, onSignOut, onClick}) {
         articles={articles}
         isLogged={isLogged}
         isHidden={isHidden}
-        onClick={onClick}
       />
       <About />
       <Login

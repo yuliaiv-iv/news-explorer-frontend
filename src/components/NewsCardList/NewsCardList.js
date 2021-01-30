@@ -3,7 +3,7 @@ import './NewsCardList.css';
 import NewsCard from '../NewsCard/NewsCard';
 import Button from '../Button/Button';
 
-function NewsCardList ({ isLogin, articles, isHidden, onClick }) {
+function NewsCardList ({ isLogin, articles, isHidden, addArticle }) {
 
   const [visibleArticles, setVisibleArticles] = useState(3);
 
@@ -23,7 +23,6 @@ function NewsCardList ({ isLogin, articles, isHidden, onClick }) {
               article={article}
               key={index}
               isLogin={isLogin}
-              onClick={onClick}
             />)}
         </ul>
         <Button
