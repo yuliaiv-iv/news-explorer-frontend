@@ -1,7 +1,11 @@
   import React from 'react';
 import { Route, Redirect } from "react-router-dom";
+import { useUser } from '../../hooks/useUser';
 
-const ProtectedRoute = ({ isLogged, ...props  }) => {
+const ProtectedRoute = ({ ...props  }) => {
+
+  const { user } = useUser();
+  const isLogged = !!user;
 
   return (
     <Route>

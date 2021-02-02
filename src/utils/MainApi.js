@@ -42,7 +42,7 @@ export class Api {
                 title: data.title,
                 text: data.description,
                 date: data.publishedAt,
-                source: data.source,
+                source: data.source.name,
                 link: data.url,
                 image: data.urlToImage,
             })
@@ -50,13 +50,13 @@ export class Api {
             .then(this._checkStatus);
     }
 
-    // deleteArticle(articleId) {
-    //     return fetch(`${this._baseUrl}/articles/${articleId}`, {
-    //         headers: this.getHeader(),
-    //         method: 'DELETE'
-    //     })
-    //         .then(this._checkStatus);
-    // }
+    deleteArticle(articleId) {
+        return fetch(`${this._baseUrl}/articles/${articleId}`, {
+            headers: this.getHeader(),
+            method: 'DELETE'
+        })
+            .then(this._checkStatus);
+    }
 }
 
 export const api = new Api({

@@ -1,28 +1,33 @@
-import React, { useState} from 'react';
+import React, { useEffect, useState} from 'react';
 import './NewsCardList.css';
 import NewsCard from '../NewsCard/NewsCard';
 import Button from '../Button/Button';
 
-function NewsCardList ({ isLogin, articles, isHidden, addArticle }) {
+function NewsCardList ({ articles, isHidden, addArticle, removeArticle }) {
 
-  const [visibleArticles, setVisibleArticles] = useState(3);
+  const [visibleArticles, setVisibleArticles] = useState([]);
+
+  useEffect(() => {        
+    setVisibleArticles(articles.slice(0, 3));
+}, [articles]);
 
   const showMoreCards = () => {
-    setVisibleArticles((prevValue) => prevValue + 3);
+    setVisibleArticles(articles.slice(0, visibleArticles.length + 3));
   }
 
-  const isEntire = visibleArticles >= articles.length;
+  const isEntire = visibleArticles.length >= articles.length
 
   return (
     <section className={`card-news ${isHidden ? '' : 'card-news_open'}`}>
       <div className='card-news__container'>
         <h3 className='card-news__title'>Результаты поиска</h3>
         <ul className='card-news__list'>
-          {articles.slice(0, visibleArticles).map((article, index) =>
+          {visibleArticles.map((article, index) =>
             <NewsCard {...article}
               article={article}
               key={index}
-              isLogin={isLogin}
+              addArticle={addArticle}
+              removeArticle={removeArticle}
             />)}
         </ul>
         <Button

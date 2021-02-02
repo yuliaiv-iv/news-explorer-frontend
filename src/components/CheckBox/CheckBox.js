@@ -1,26 +1,40 @@
 import React, { useState } from 'react';
+import { useUser } from '../../hooks/useUser';
 import { Bookmark } from '../Icons/Bookmark';
 import './CheckBox.css';
-import { api } from '../../utils/MainApi';
 
-function CheckBox({ addArticle }) {
+function CheckBox({ addArticle, removeArticle }) {
 
-  const [isActive, setIsActive] = useState(false);
-  const [articles, setArticles] = useState([]);
+  const [checked, setChecked] = useState(false);
+  const {user} = useUser()
+  const isLogged = !!user
 
   const handleChecked = () => {
-    setIsActive(!isActive)
+    if(!checked) {
+      addArticle()
+      setChecked(true)
+    } else {
+      removeArticle()
+      setChecked(false)
+    }
   }
-
 
   return (
     <>
-      <label className='card__checkbox' onChange={handleChecked} checked>
-        <input className='card__checkbox-input'
-          type='checkbox' />
+      <label
+        className='card__checkbox'
+      >
+        <input
+          className='card__checkbox-input'
+          // onClick={isActive ? removeArticle : addArticle}
+          type='checkbox'
+          disabled={!isLogged}
+          checked={checked}
+          onChange={handleChecked}
+        />
         <span className='card__checkbox-span'>
           <Bookmark
-            isChecked={isActive}
+            isChecked={checked}
           />
         </span>
       </label>

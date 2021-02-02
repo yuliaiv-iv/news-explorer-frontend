@@ -5,12 +5,27 @@ import { Trash } from '../Icons/Trash';
 import CheckBox from '../CheckBox/CheckBox';
 import Button from '../Button/Button';
 import ExternalLink from '../ExternalLink/ExternalLink';
+import { convertDate } from '../../utils/configs'
 
+function Card({ article, addArticle, removeArticle }) {
 
-function Card({ article, addArticle }) {
+  const {
+    text,
+    keyword,
+    link,
+    date,
+    urlToImage,
+    image,
+    title,
+    publishedAt,
+    url,
+    description,
+    source
+  } = article;
 
   const titleRef = useRef('');
   const [style, setStyle] = useState({});
+  const newsDate = publishedAt || date
   const path = useRouteMatch();
 
   useEffect(() => {
@@ -22,15 +37,24 @@ function Card({ article, addArticle }) {
     }
   }, [titleRef]);
 
+  const handleCheckbox = () => {
+    addArticle(article)
+  }
+
+  const handleRemove = () => {
+    removeArticle(article)
+  }
 
   return (
     <li className='card'>
       {path.path === '/' ?
         <CheckBox
+          addArticle={handleCheckbox}
+          removeArticle={handleRemove}
         /> :
         <>
-          {/* <p className='card__keyword'>{keyword}</p> */}
-          <Button className='card'>
+          <p className='card__keyword'>{keyword}</p>
+          <Button className='card' onClick={handleRemove}>
             <Trash />
           </Button>
           <p className='card__popup card__popup_trash'>
@@ -38,14 +62,14 @@ function Card({ article, addArticle }) {
           </p>
         </>
       }
-      <img className='card__image' src={article.urlToImage} alt={article.title} />
-      <ExternalLink section='card' href={article.url}>
+      <img className='card__image' src={urlToImage || image} alt={title} />
+      <ExternalLink section='card' href={url || link}>
         <div className='card__info'>
-          <div className='card__date'>{article.publishedAt}</div>
-          <h2 className='card__title' ref={titleRef}>{article.title}</h2>
-          <p className='card__text' style={style}>{article.description}</p>
+          <div className='card__date'>{convertDate(newsDate)}</div>
+          <h2 className='card__title' ref={titleRef}>{title}</h2>
+          <p className='card__text' style={style}>{description || text}</p>
         </div>
-        <h4 className='card__source'>{article.source.name}</h4>
+        <h4 className='card__source'>{source.name || source}</h4>
       </ExternalLink>
     </li>
   )

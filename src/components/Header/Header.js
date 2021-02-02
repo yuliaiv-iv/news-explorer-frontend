@@ -1,4 +1,5 @@
 import React, { useState, useContext } from 'react';
+import { Route, Switch, Redirect, useHistory } from 'react-router-dom';
 import { Logout } from '../Icons/Logout';
 import { Logo } from '../Icons/Logo';
 import Navigation from '../Navigation/Navigation';
@@ -7,14 +8,20 @@ import Button from '../Button/Button';
 import './Header.css';
 import { NavBar } from '../Icons/NavBar';
 import { Closebtn } from '../Icons/Closebtn';
-import { CurrentUserContext } from '../../contexts/CurrentUserContext';
+import { useUser } from '../../hooks/useUser';
 
-function Header({ onClick, onSignOut, isLogged, theme }) {
+function Header({ onClick, onSignOut, theme }) {
 
   const [isOpen, setIsOpen] = useState(false);
   const [isClicked, setIsClicked] = useState(false);
-  const currentUser = useContext(CurrentUserContext);
 
+  const { user } = useUser();
+  const isLogged = !!user;
+
+  let history = useHistory();
+  function handleHistory() {
+    history.push('/');
+  }
 
   const headerClassname = (
     `header header_${theme} ${isOpen ? `header_open-${theme}` : ''}`
@@ -24,7 +31,6 @@ function Header({ onClick, onSignOut, isLogged, theme }) {
     setIsOpen(!isOpen);
     setIsClicked(!isClicked);
   };
-
 
   return (
     <header
@@ -53,7 +59,7 @@ function Header({ onClick, onSignOut, isLogged, theme }) {
               className='header'
               modifier={`header__button_${theme}`}
               onClick={isLogged ? onSignOut : onClick}
-              button={isLogged ? currentUser.name : 'Авторизоваться'}
+              button={isLogged ? user.name : 'Авторизоваться'}
             >
               {isLogged ?
                 <Logout
@@ -69,6 +75,7 @@ function Header({ onClick, onSignOut, isLogged, theme }) {
             theme={theme}
             path='/'
             text='Главная'
+            onClick={handleHistory}
           />
           {isLogged ?
             <InternalLink

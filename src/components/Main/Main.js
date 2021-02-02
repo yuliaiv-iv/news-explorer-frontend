@@ -4,7 +4,7 @@ import Preloader from '../Preloader/Preloader';
 import NewsCardList from '../NewsCardList/NewsCardList';
 import Wrapper from '../Wrapper/Wrapper';
 
-function Main({ isLogin, isOpen, articles, isHidden, addArticle }) {
+function Main({ isOpen, articles, isHidden, addArticle, removeArticle }) {
 
   // const [error, setError] = useState(false);
 
@@ -16,9 +16,10 @@ function Main({ isLogin, isOpen, articles, isHidden, addArticle }) {
             isOpen={isOpen}
           />
           <NewsCardList
-            isLogin={isLogin}
             articles={articles}
             isHidden={isHidden}
+            addArticle={addArticle}
+            removeArticle={removeArticle}
           />
         </Wrapper>
       </main>

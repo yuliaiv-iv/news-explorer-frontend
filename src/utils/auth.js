@@ -1,6 +1,5 @@
 export const BASE_URL = 'https://api.newsinthecloud.students.nomoredomains.monster';
 
-
 export const checkStatus = (res) => {
   if (res.ok) {
     return res.json();

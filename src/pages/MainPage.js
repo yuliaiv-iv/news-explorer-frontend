@@ -10,19 +10,29 @@ import Wrapper from '../components/Wrapper/Wrapper';
 import * as auth from '../utils/auth';
 import * as news from '../utils/NewsApi';
 import { api } from '../utils/MainApi';
+import { useUser } from '../hooks/useUser';
 
-function MainPage({ isLogged, setIsLogged, onSignOut, addArticle }) {
+function MainPage({ removeArticle, onSignOut, addArticle, articles, setArticles }) {
 
   useEffect(() => {
     window.scrollTo(0, 0)
   }, []);
+
+  const {user, getUser} = useUser()
+  const isLogged = !!user;
 
   const [isLoading, setIsLoading] = useState(false);
   const [isHidden, setIsHidden] = useState(true)
   const [isLoginOpen, setIsLoginOpen] = useState(false);
   const [isRegisterOpen, setIsRegisterOpen] = useState(false);
   const [isSuccessOpen, setIsSuccessOpen] = useState(false);
-  const [articles, setArticles] = useState([]);
+
+useEffect(() => {
+  const storageArticles = JSON.parse(localStorage.getItem('arr'));
+  setArticles(storageArticles)
+}, [])
+
+
 
   function handleRegisterSubmit(email, password, name) {
     auth.register(email, password, name)
@@ -44,7 +54,6 @@ function MainPage({ isLogged, setIsLogged, onSignOut, addArticle }) {
     auth.authorize(email, password)
       .then((data) => {
         if (data.token) {
-          setIsLogged(true);
           localStorage.setItem('token', data.token)
           setIsLoginOpen(false);
         }
@@ -57,14 +66,16 @@ function MainPage({ isLogged, setIsLogged, onSignOut, addArticle }) {
           return console.log('пользователь с email не найден');
         }
       })
+      .finally(() => {
+        getUser()
+      })
   }
 
   function tokenCheck() {
     const token = localStorage.getItem('token');
     if (token) {
       auth.checkToken(token)
-        .then((data) => {
-          setIsLogged(true);
+        .then(() => {
         })
         .catch((err) => {
           if (err === 401) {
@@ -76,7 +87,7 @@ function MainPage({ isLogged, setIsLogged, onSignOut, addArticle }) {
 
   useEffect(() => {
     tokenCheck();
-  }, []);
+  }, [isLogged]);
 
   function handlePopupOpen() {
     setIsLoginOpen(true);
@@ -105,11 +116,16 @@ function MainPage({ isLogged, setIsLogged, onSignOut, addArticle }) {
 
   const getArticles = (keyword) => {
     setIsLoading(true)
+    setIsHidden(true)
     news.searchArticles(keyword)
       .then((data) => {
-        const newArticle = data.map((article) => ({ keyword, ...article }))
+        const newArticle = data.map((article) => ({
+          keyword,
+          ...article
+        }))
         setArticles(newArticle)
         localStorage.setItem('arr', JSON.stringify(newArticle))
+        console.log(newArticle)
       })
       .catch((err) => {
         console.log(`${err}`)
@@ -120,14 +136,13 @@ function MainPage({ isLogged, setIsLogged, onSignOut, addArticle }) {
       })
   };
 
-  console.log(articles)
+
   return (
     <>
       <Wrapper section='header'>
         <Header
           onClick={handlePopupOpen}
           onSignOut={onSignOut}
-          isLogged={isLogged}
           theme='light'
         />
         <SearchForm
@@ -137,8 +152,9 @@ function MainPage({ isLogged, setIsLogged, onSignOut, addArticle }) {
       <Main
         isOpen={isLoading}
         articles={articles}
-        isLogged={isLogged}
         isHidden={isHidden}
+        addArticle={addArticle}
+        removeArticle={removeArticle}
       />
       <About />
       <Login
