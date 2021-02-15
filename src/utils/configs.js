@@ -15,3 +15,12 @@ export const convertDate = (newsDate) => {
   return cardDate
 };
 
+const BADREQ_ERROR = 'Некорректно заполнено одно из полей';
+const CONFLICT_ERROR = 'Пользователь с таким email уже существует';
+const UNAUTH_ERROR = 'Неправильная почта или пароль';
+
+export {
+  BADREQ_ERROR,
+  CONFLICT_ERROR,
+  UNAUTH_ERROR
+}

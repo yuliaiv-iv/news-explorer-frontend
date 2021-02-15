@@ -7,6 +7,10 @@ const ProtectedRoute = ({ ...props  }) => {
   const { user } = useUser();
   const isLogged = !!user;
 
+  const Log = () => {
+    console.log('data')
+  }
+
   return (
     <Route>
       {

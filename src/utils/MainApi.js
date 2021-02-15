@@ -1,3 +1,4 @@
+import { BASE_URL } from './auth';
 export class Api {
     constructor(options) {
         this._baseUrl = options.baseUrl;
@@ -60,7 +61,7 @@ export class Api {
 }
 
 export const api = new Api({
-    baseUrl: 'https://api.newsinthecloud.students.nomoredomains.monster',
+    baseUrl: BASE_URL,
     headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json',

@@ -14,7 +14,7 @@ function Form({ className, onClick, onSubmit, isDisabled, error, isError, button
         >
         {children}
         <div className={`${className}__button-container`}>
-          {isError ? <span className='popup__error'>{error}</span> : ''}
+          {isError ? <span className={`${className}__error`}>{error}</span> : ''}
           <Button
             type='submit'
             className={className}

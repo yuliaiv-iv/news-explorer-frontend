@@ -9,7 +9,7 @@ import SearchForm from '../components/SearchForm/SearchForm';
 import Wrapper from '../components/Wrapper/Wrapper';
 import * as auth from '../utils/auth';
 import * as news from '../utils/NewsApi';
-import { api } from '../utils/MainApi';
+import { BADREQ_ERROR, CONFLICT_ERROR, UNAUTH_ERROR } from '../utils/configs'
 import { useUser } from '../hooks/useUser';
 
 function MainPage({ removeArticle, onSignOut, addArticle, articles, setArticles }) {
@@ -18,21 +18,26 @@ function MainPage({ removeArticle, onSignOut, addArticle, articles, setArticles 
     window.scrollTo(0, 0)
   }, []);
 
-  const {user, getUser} = useUser()
+  const { user, getUser } = useUser()
   const isLogged = !!user;
 
-  const [isLoading, setIsLoading] = useState(false);
-  const [isHidden, setIsHidden] = useState(true)
+  const [isOpen, setIsOpen] = useState(false)
+  const [notFound, setNotFound] = useState(false)
+  const [isShown, setIsShown] = useState(false)
+  const [isEmpty, setIsEmpty] = useState(false)
   const [isLoginOpen, setIsLoginOpen] = useState(false);
   const [isRegisterOpen, setIsRegisterOpen] = useState(false);
   const [isSuccessOpen, setIsSuccessOpen] = useState(false);
 
-useEffect(() => {
-  const storageArticles = JSON.parse(localStorage.getItem('arr'));
-  setArticles(storageArticles)
-}, [])
-
-
+  useEffect(() => {
+    if (localStorage.getItem('articles')) {
+      const storageArticles = JSON.parse(localStorage.getItem('articles'));
+      setArticles(storageArticles);
+      setIsShown(true);
+    } else {
+      setIsShown(false);
+    }
+  }, [setArticles])
 
   function handleRegisterSubmit(email, password, name) {
     auth.register(email, password, name)
@@ -45,7 +50,10 @@ useEffect(() => {
       })
       .catch((err) => {
         if (err === 400) {
-          return console.log('некорректно заполнено одно из полей');
+          return console.log(BADREQ_ERROR);
+        }
+        if (err === 409) {
+          return console.log(CONFLICT_ERROR)
         }
       })
   }
@@ -60,10 +68,10 @@ useEffect(() => {
       })
       .catch((err) => {
         if (err === 400) {
-          return console.log('не передано одно из полей');
+          return console.log(BADREQ_ERROR);
         }
         if (err === 401) {
-          return console.log('пользователь с email не найден');
+          return console.log(UNAUTH_ERROR);
         }
       })
       .finally(() => {
@@ -79,7 +87,7 @@ useEffect(() => {
         })
         .catch((err) => {
           if (err === 401) {
-            return console.log('Токен не передан или передан не в том формате');
+            return console.log('Токен не передан');
           }
         })
     }
@@ -115,25 +123,34 @@ useEffect(() => {
   }
 
   const getArticles = (keyword) => {
-    setIsLoading(true)
-    setIsHidden(true)
-    news.searchArticles(keyword)
-      .then((data) => {
-        const newArticle = data.map((article) => ({
-          keyword,
-          ...article
-        }))
-        setArticles(newArticle)
-        localStorage.setItem('arr', JSON.stringify(newArticle))
-        console.log(newArticle)
-      })
-      .catch((err) => {
-        console.log(`${err}`)
-      })
-      .finally(() => {
-        setIsLoading(false)
-        setIsHidden(false)
-      })
+    if (keyword === '') {
+      setIsEmpty(true)
+    } else {
+      setIsOpen(true)
+      setNotFound(false)
+      setIsEmpty(false)
+      news.searchArticles(keyword)
+        .then((data) => {
+          const newArticle = data.map((article) => ({
+            keyword,
+            ...article
+          }))
+          if (newArticle.length === 0) {
+            setNotFound(true)
+            setIsShown(false)
+          } else {
+            setArticles(newArticle)
+            setIsShown(true)
+            setIsOpen(false)
+            localStorage.setItem('articles', JSON.stringify(newArticle))
+          }
+        })
+        .catch((err) => {
+          setNotFound(true)
+          setIsShown(false)
+          console.log(`${err}`)
+        })
+    }
   };
 
 
@@ -147,12 +164,14 @@ useEffect(() => {
         />
         <SearchForm
           getArticles={getArticles}
+          isEmpty={isEmpty}
         />
       </Wrapper>
       <Main
-        isOpen={isLoading}
+        isOpen={isOpen}
         articles={articles}
-        isHidden={isHidden}
+        isShown={isShown}
+        notFound={notFound}
         addArticle={addArticle}
         removeArticle={removeArticle}
       />

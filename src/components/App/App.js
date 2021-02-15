@@ -40,7 +40,7 @@ function App() {
 
   function onSignOut() {
     localStorage.removeItem('token');
-    localStorage.setItem('arr', JSON.stringify([]))
+    // localStorage.setItem('arr', JSON.stringify([]))
     getUser()
     history.push('/')
   }
@@ -70,7 +70,6 @@ function App() {
       })
   };
 
-
   return (
     <>
       <Switch>
@@ -94,8 +93,8 @@ function App() {
             removeArticle={handleUnSaveArticle}
           />
         </ProtectedRoute>
-        <Route path='/' >
-          <Redirect to='/' />
+        <Route>
+          <Redirect to="/" />
         </Route>
       </Switch>
       <Footer />

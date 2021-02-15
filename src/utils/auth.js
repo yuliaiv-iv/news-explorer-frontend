@@ -1,4 +1,8 @@
-export const BASE_URL = 'https://api.newsinthecloud.students.nomoredomains.monster';
+// export const BASE_URL = 'https://api.newsinthecloud.students.nomoredomains.monster';
+
+export const BASE_URL = process.env.NODE_ENV === 'production'
+  ? 'https://api.newsinthecloud.students.nomoredomains.monster'
+  : 'http://localhost:3000';
 
 export const checkStatus = (res) => {
   if (res.ok) {

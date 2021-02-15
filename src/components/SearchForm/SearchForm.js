@@ -2,9 +2,8 @@ import React, { useState } from 'react';
 import Form from '../Form/Form';
 import FormInput from '../FormInput/FormInput';
 import './SearchForm.css'
-import * as news from '../../utils/NewsApi';
 
-function SearchForm({ getArticles }) {
+function SearchForm({ getArticles, isEmpty }) {
 
   const [keyword, setKeyword] = useState('');
 
@@ -26,6 +25,8 @@ function SearchForm({ getArticles }) {
           button='Искать'
           className='search'
           onSubmit={handleSearchSubmit}
+          isError={isEmpty}
+          error='Нужно ввести ключевое слово'
         >
           <FormInput
             placeholder='Введите тему новости'
@@ -34,6 +35,7 @@ function SearchForm({ getArticles }) {
             onChange={handleInputSearch}
             value={keyword}
           />
+          {/* {isEmpty ? <span>Нужно ввести ключевое слово</span> : ''} */}
         </Form>
       </div>
     </section>

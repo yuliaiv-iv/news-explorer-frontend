@@ -4,9 +4,7 @@ import Preloader from '../Preloader/Preloader';
 import NewsCardList from '../NewsCardList/NewsCardList';
 import Wrapper from '../Wrapper/Wrapper';
 
-function Main({ isOpen, articles, isHidden, addArticle, removeArticle }) {
-
-  // const [error, setError] = useState(false);
+function Main({ notFound, isOpen, articles, isShown, addArticle, removeArticle }) {
 
   return (
     <>
@@ -14,10 +12,11 @@ function Main({ isOpen, articles, isHidden, addArticle, removeArticle }) {
         <Wrapper section='main'>
           <Preloader
             isOpen={isOpen}
+            notFound={notFound}
           />
           <NewsCardList
             articles={articles}
-            isHidden={isHidden}
+            isShown={isShown}
             addArticle={addArticle}
             removeArticle={removeArticle}
           />
