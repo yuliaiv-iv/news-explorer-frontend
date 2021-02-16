@@ -3,19 +3,24 @@ import { useUser } from '../../hooks/useUser';
 import { Bookmark } from '../Icons/Bookmark';
 import './CheckBox.css';
 
-function CheckBox({ addArticle, removeArticle }) {
+function CheckBox({ article, addArticle, removeArticle }) {
 
-  const [checked, setChecked] = useState(false);
-  const {user} = useUser()
-  const isLogged = !!user
+  const [isChecked, setIsChecked] = useState(!!article._id);
+  const {user} = useUser();
+  const isLogged = !!user;
+
+  // const isChecked = !!article._id
+  // const handleSave = () => !article._id ? addArticle(article) : removeArticle(article);
+
+  // console.log(article.url)
 
   const handleChecked = () => {
-    if(!checked) {
+    if(!isChecked) {
       addArticle()
-      setChecked(true)
+      setIsChecked(true)
     } else {
       removeArticle()
-      setChecked(false)
+      setIsChecked(false)
     }
   }
 
@@ -26,15 +31,14 @@ function CheckBox({ addArticle, removeArticle }) {
       >
         <input
           className='card__checkbox-input'
-          // onClick={isActive ? removeArticle : addArticle}
           type='checkbox'
           disabled={!isLogged}
-          checked={checked}
+          checked={isChecked}
           onChange={handleChecked}
         />
         <span className='card__checkbox-span'>
           <Bookmark
-            isChecked={checked}
+            isChecked={isChecked}
           />
         </span>
       </label>

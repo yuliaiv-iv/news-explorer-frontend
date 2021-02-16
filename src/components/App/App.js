@@ -18,9 +18,6 @@ function App() {
   const { getUser, user } = useUser();
   const isLogged = !!user;
 
-
-  // const savedNews = Object.values(savedArticles)
-
   useEffect(() => {
     const getArticles = async () => {
       try {
@@ -51,49 +48,26 @@ function App() {
       .then((article) => {
         data._id = article._id
         setSavedArticles([data, ...savedArticles])
-        console.log(savedArticles)
-        console.log(data)
       })
       .catch((err) => {
         console.log(err);
       });
   };
 
+  console.log(savedArticles)
+  console.log(articles)
 
   const handleUnSaveArticle = (data) => {
     api.deleteArticle(data._id)
       .then((article) => {
         const newCards = savedArticles.filter((a) => a._id !== data._id);
         data._id = article._id
-        // console.log(data._id)
-        // console.log(article._id)
         setSavedArticles(newCards);
       })
       .catch(err => {
         console.log(err);
       })
   };
-
-//   const deleteArticle = async article => {
-//     try {
-//         const data = await api.deleteArticle(article._id);
-//         const newArticles = savedArticles.filter(a => a._id !== data._id);
-//         setSavedArticles(newArticles);
-//         setState(state => {
-//           const newArticles = state.articles.map(item => {
-//             if(item._id === data._id) delete item._id;
-//             return item;
-//           })
-
-//           return ({
-//             ...state,
-//             article: newArticles,
-//           })
-//         })
-//       } catch (err) {
-//         console.log(err);
-//       }
-// }
 
   return (
     <>

@@ -19,7 +19,7 @@ function MainPage({
   articles,
   setArticles,
   isLoginOpen,
-  setIsLoginOpen
+  setIsLoginOpen,
 }) {
 
   useEffect(() => {

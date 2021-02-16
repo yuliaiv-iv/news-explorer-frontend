@@ -6,7 +6,6 @@ import { useUser } from '../../hooks/useUser';
 function SavedNews({ savedArticles, removeArticle }) {
 
   const { user } = useUser();
-
   const words = savedArticles.map(a => a.keyword);
 
   let hash = {}
@@ -31,13 +30,20 @@ function SavedNews({ savedArticles, removeArticle }) {
     return sortedElements.slice(2).length;
   }
 
+  const countArticles = savedArticles.length;
   const wordEnding = [
     'сохраненная статья',
     'сохраненные статьи',
     'сохраненных статей',
   ]
 
-  const countArticles = savedArticles.length;
+  const handleCountArticles = () => {
+    if (savedArticles.length === 0) {
+      return 'нет'
+    } else {
+      return savedArticles.length
+    }
+  }
 
   const handleEnding = (count, words) => {
     return words[(count % 100 > 4 && count % 100 < 20) ? 2 : [2, 0, 1, 1, 1, 2][(count % 10 < 5) ? count % 10 : 5]];
@@ -49,7 +55,7 @@ function SavedNews({ savedArticles, removeArticle }) {
         <div className='savednews__info'>
           <h3 className='savednews__title'>Сохранённые статьи</h3>
           <h4 className='savednews__subtitle'>
-            {`${user.name}, у вас ${countArticles} ${handleEnding(countArticles, wordEnding)}`}
+            {`${user.name}, у вас ${handleCountArticles()} ${handleEnding(countArticles, wordEnding)}`}
           </h4>
           {sortedElements.length === 0 ? '' : 
           <p className='savednews__description'>По ключевым словам: <span className='savednews__description_span'>{getKeywords(sortedElements)} </span>

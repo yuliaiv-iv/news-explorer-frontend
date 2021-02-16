@@ -25,15 +25,15 @@ function Card({ article, addArticle, removeArticle }) {
 
   const titleRef = useRef('');
   const [style, setStyle] = useState({});
-  const newsDate = publishedAt || date
+  const newsDate = publishedAt || date;
   const path = useRouteMatch();
 
   useEffect(() => {
     const height = (titleRef.current && titleRef.current.offsetHeight) || 0;
     if (height <= 58) {
-      setStyle({ "--lines": "5" })
+      setStyle({ '--lines': '5' })
     } else if (height >= 59 && height <= 87) {
-      setStyle({ "--lines": "4" })
+      setStyle({ '--lines': '4' })
     }
   }, [titleRef]);
 
@@ -51,6 +51,7 @@ function Card({ article, addArticle, removeArticle }) {
         <CheckBox
           addArticle={handleCheckbox}
           removeArticle={handleRemove}
+          article={article}
         /> :
         <>
           <p className='card__keyword'>{keyword}</p>
