@@ -4,7 +4,7 @@ import './Popup.css'
 
 function Popup({ isSuccess, toggle, onToggle, title, onClose, isOpen, children }) {
 
-  function handleEsc(event) {
+  const handleEsc = (event) => {
     if (event.key !== 'Escape') {
       return
     }
@@ -16,7 +16,7 @@ function Popup({ isSuccess, toggle, onToggle, title, onClose, isOpen, children }
     return () => document.removeEventListener('keydown', handleEsc);
   }, [isOpen]);
 
-  function handleOverlayClose(event) {
+  const handleOverlayClose = (event) => {
     if (event.target === event.currentTarget && isOpen) {
       onClose();
     }

@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import FormInput from '../FormInput/FormInput';
 import Form from '../Form/Form';
 import './Login.css'
 import Popup from '../Popup/Popup';
 import useForm from '../../hooks/useForm'
 
-function Login({ onClick, onClose, isOpen, onToggle, onLoggin }) {
+function Login({ onClick, onClose, isOpen, onToggle, onLogin, error, isError, setAuthError }) {
 
   const {
     handleInputChange,
@@ -21,13 +21,14 @@ function Login({ onClick, onClose, isOpen, onToggle, onLoggin }) {
 
   useEffect(() => {
     setValidationError({ email: '', password: '' });
-    setValues({email: '', password: ''})
-    setIsValid({ email: false, password: false })
+    setValues({email: '', password: ''});
+    setIsValid({ email: false, password: false });
+    setAuthError('')
   }, [isOpen])
 
   function submitForm(e) {
     const { email, password, name } = values;
-    onLoggin(email, password, name);
+    onLogin(email, password, name);
   }
 
   return (
@@ -44,6 +45,8 @@ function Login({ onClick, onClose, isOpen, onToggle, onLoggin }) {
         className='popup'
         onSubmit={handleSubmit}
         isDisabled={!isFormValid}
+        error={error}
+        isError={isError}
       >
         <FormInput
           name='email'

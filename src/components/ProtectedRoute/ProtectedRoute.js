@@ -1,15 +1,17 @@
-  import React from 'react';
+import React, { useEffect } from 'react';
 import { Route, Redirect } from "react-router-dom";
 import { useUser } from '../../hooks/useUser';
 
-const ProtectedRoute = ({ ...props  }) => {
+const ProtectedRoute = ({ ...props }) => {
 
   const { user } = useUser();
   const isLogged = !!user;
 
-  const Log = () => {
-    console.log('data')
-  }
+  useEffect(() => {
+    if (!localStorage.getItem('token')) {
+      props.onLogin(true);
+    }
+  }, [props]);
 
   return (
     <Route>
@@ -17,6 +19,7 @@ const ProtectedRoute = ({ ...props  }) => {
         () => isLogged ? <Route {...props} /> : <Redirect to='/' />
       }
     </Route>
-)}
+  )
+}
 
 export default ProtectedRoute;

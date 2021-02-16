@@ -2,7 +2,7 @@ import React from 'react';
 import Button from '../Button/Button';
 import './Form.css'
 
-function Form({ className, onClick, onSubmit, isDisabled, error, isError, button, children }) {
+function Form({ className, onClick, onSubmit, isDisabled, error, isError, button, children, authError, formError }) {
 
   return (
     <>

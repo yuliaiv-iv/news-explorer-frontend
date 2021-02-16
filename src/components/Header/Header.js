@@ -19,7 +19,7 @@ function Header({ onClick, onSignOut, theme }) {
   const isLogged = !!user;
 
   let history = useHistory();
-  function handleHistory() {
+  const handleHistory = () => {
     history.push('/');
   }
 

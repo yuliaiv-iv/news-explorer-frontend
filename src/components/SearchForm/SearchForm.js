@@ -11,9 +11,11 @@ function SearchForm({ getArticles, isEmpty }) {
     setKeyword(event.target.value);
   }
 
+  const keywordCapital = keyword.charAt(0).toUpperCase() + keyword.slice(1)
+
   const handleSearchSubmit = (e) => {
     e.preventDefault();
-      getArticles(keyword);
+    getArticles(keywordCapital);
   };
 
   return (
@@ -35,7 +37,6 @@ function SearchForm({ getArticles, isEmpty }) {
             onChange={handleInputSearch}
             value={keyword}
           />
-          {/* {isEmpty ? <span>Нужно ввести ключевое слово</span> : ''} */}
         </Form>
       </div>
     </section>

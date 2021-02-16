@@ -28,7 +28,6 @@ export const UserProvider = ({ children }) => {
     getUser();
   }, [])
 
-  // console.log(state)
   return (
     <CurrentUserContext.Provider 
     value={{

@@ -5,9 +5,7 @@ import Form from '../Form/Form';
 import Popup from '../Popup/Popup';
 import useForm from '../../hooks/useForm'
 
-function Register({ onClose, isOpen, onToggle, onRegister }) {
-
-  const errorMessage = 'Такой пользователь уже есть';
+function Register({ onClose, isOpen, onToggle, onRegister, error, isError, setAuthError }) {
 
   const {
     handleInputChange,
@@ -25,6 +23,7 @@ function Register({ onClose, isOpen, onToggle, onRegister }) {
     setValidationError({ email: '', password: '', name: '' });
     setValues({email: '', password: '', name: ''})
     setIsValid({ email: false, password: false, name: false })
+    setAuthError('')
   }, [isOpen])
 
   function submitForm(e) {
@@ -43,8 +42,8 @@ function Register({ onClose, isOpen, onToggle, onRegister }) {
       <Form
         button='Зарегистрироваться'
         className='popup'
-        // isError={true}
-        // error={errorMessage}
+        error={error}
+        isError={isError}
         onSubmit={handleSubmit}
         isDisabled={!isFormValid}
       >
