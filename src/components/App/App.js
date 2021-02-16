@@ -22,11 +22,6 @@ function App() {
     const getArticles = async () => {
       try {
         const fetchedArticles = await api.getArticles();
-        // const savedArticlesMap = fetchedArticles.reduce((acc, art) => {
-        //   const id = `${art.date}-${art.link}`
-        //   acc[id] = art;
-        //   return acc
-        // }, {})
         setSavedArticles(fetchedArticles)
       } catch (error) {
         console.log(error)
@@ -55,7 +50,7 @@ function App() {
   };
 
   console.log(savedArticles)
-  console.log(articles)
+  // console.log(articles)
 
   const handleUnSaveArticle = (data) => {
     api.deleteArticle(data._id)
@@ -63,6 +58,7 @@ function App() {
         const newCards = savedArticles.filter((a) => a._id !== data._id);
         data._id = article._id
         setSavedArticles(newCards);
+        console.log(newCards)
       })
       .catch(err => {
         console.log(err);

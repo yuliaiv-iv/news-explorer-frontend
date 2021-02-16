@@ -37,9 +37,9 @@ function Card({ article, addArticle, removeArticle }) {
     }
   }, [titleRef]);
 
-  const handleCheckbox = () => {
-    addArticle(article)
-  }
+  // const handleCheckbox = () => {
+  //   addArticle(article)
+  // }
 
   const handleRemove = () => {
     removeArticle(article)
@@ -49,8 +49,8 @@ function Card({ article, addArticle, removeArticle }) {
     <li className='card'>
       {path.path === '/' ?
         <CheckBox
-          addArticle={handleCheckbox}
-          removeArticle={handleRemove}
+          addArticle={addArticle}
+          removeArticle={removeArticle}
           article={article}
         /> :
         <>

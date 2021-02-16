@@ -5,22 +5,19 @@ import './CheckBox.css';
 
 function CheckBox({ article, addArticle, removeArticle }) {
 
-  const [isChecked, setIsChecked] = useState(!!article._id);
+  // const [isChecked, setIsChecked] = useState(!!article._id);
   const {user} = useUser();
   const isLogged = !!user;
 
-  // const isChecked = !!article._id
-  // const handleSave = () => !article._id ? addArticle(article) : removeArticle(article);
+  const isChecked = !!article._id
 
-  // console.log(article.url)
+  console.log(isChecked)
 
   const handleChecked = () => {
-    if(!isChecked) {
-      addArticle()
-      setIsChecked(true)
+    if(!article._id) {
+      addArticle(article)
     } else {
-      removeArticle()
-      setIsChecked(false)
+      removeArticle(article)
     }
   }
 
