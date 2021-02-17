@@ -1,10 +1,18 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './Main.css';
 import Preloader from '../Preloader/Preloader';
 import NewsCardList from '../NewsCardList/NewsCardList';
 import Wrapper from '../Wrapper/Wrapper';
 
-function Main({ notFound, isOpen, articles, isShown, addArticle, removeArticle }) {
+function Main({ 
+  notFound, 
+  isOpen, 
+  articles, 
+  isShown, 
+  addArticle, 
+  removeArticle,
+  handlePopupOpen
+}) {
 
   return (
     <>
@@ -19,6 +27,7 @@ function Main({ notFound, isOpen, articles, isShown, addArticle, removeArticle }
             isShown={isShown}
             addArticle={addArticle}
             removeArticle={removeArticle}
+            handlePopupOpen={handlePopupOpen}
           />
         </Wrapper>
       </main>

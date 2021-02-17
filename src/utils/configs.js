@@ -15,10 +15,6 @@ export const convertDate = (newsDate) => {
   return cardDate
 };
 
-const CONFLICT_ERROR = 'Пользователь с таким email уже существует';
-const UNAUTH_ERROR = 'Неправильная почта или пароль';
+export const CONFLICT_ERROR = 'Пользователь с таким email уже существует';
+export const UNAUTH_ERROR = 'Неправильная почта или пароль';
 
-export {
-  CONFLICT_ERROR,
-  UNAUTH_ERROR
-}

@@ -7,7 +7,7 @@ import Button from '../Button/Button';
 import ExternalLink from '../ExternalLink/ExternalLink';
 import { convertDate } from '../../utils/configs'
 
-function Card({ article, addArticle, removeArticle }) {
+function Card({ article, addArticle, removeArticle, handlePopupOpen }) {
 
   const {
     text,
@@ -23,23 +23,8 @@ function Card({ article, addArticle, removeArticle }) {
     source
   } = article;
 
-  const titleRef = useRef('');
-  const [style, setStyle] = useState({});
   const newsDate = publishedAt || date;
   const path = useRouteMatch();
-
-  useEffect(() => {
-    const height = (titleRef.current && titleRef.current.offsetHeight) || 0;
-    if (height <= 58) {
-      setStyle({ '--lines': '5' })
-    } else if (height >= 59 && height <= 87) {
-      setStyle({ '--lines': '4' })
-    }
-  }, [titleRef]);
-
-  // const handleCheckbox = () => {
-  //   addArticle(article)
-  // }
 
   const handleRemove = () => {
     removeArticle(article)
@@ -52,6 +37,7 @@ function Card({ article, addArticle, removeArticle }) {
           addArticle={addArticle}
           removeArticle={removeArticle}
           article={article}
+          handlePopupOpen={handlePopupOpen}
         /> :
         <>
           <p className='card__keyword'>{keyword}</p>
@@ -67,8 +53,8 @@ function Card({ article, addArticle, removeArticle }) {
       <ExternalLink section='card' href={url || link}>
         <div className='card__info'>
           <div className='card__date'>{convertDate(newsDate)}</div>
-          <h2 className='card__title' ref={titleRef}>{title}</h2>
-          <p className='card__text' style={style}>{description || text}</p>
+          <h2 className='card__title'>{title}</h2>
+          <p className='card__text'>{description || text}</p>
         </div>
         <h4 className='card__source'>{source.name || source}</h4>
       </ExternalLink>

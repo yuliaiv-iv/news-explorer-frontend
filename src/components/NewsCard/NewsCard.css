@@ -55,7 +55,7 @@
   color: #1A1B22;
   display: -webkit-box;
   -webkit-box-orient: vertical;
-  -webkit-line-clamp: var(--lines);
+  -webkit-line-clamp: 4;
   overflow: hidden;
 }
 

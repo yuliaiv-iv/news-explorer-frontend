@@ -1,6 +1,6 @@
 import { today, pastDay } from '../utils/configs';
 
-const pageSize = 10;
+const pageSize = 5;
 const apiKey = '1d4fbc859c2e4366b37f69d873101c1f';
 const baseURL = 'http://newsapi.org/v2/';
 
