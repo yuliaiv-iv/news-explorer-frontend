@@ -1,5 +1,5 @@
-import React, { useState, useContext } from 'react';
-import { Route, Switch, Redirect, useHistory } from 'react-router-dom';
+import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import { Logout } from '../Icons/Logout';
 import { Logo } from '../Icons/Logo';
 import Navigation from '../Navigation/Navigation';
@@ -14,7 +14,6 @@ function Header({ onClick, onSignOut, theme }) {
 
   const [isOpen, setIsOpen] = useState(false);
   const [isClicked, setIsClicked] = useState(false);
-
   const { user } = useUser();
   const isLogged = !!user;
 

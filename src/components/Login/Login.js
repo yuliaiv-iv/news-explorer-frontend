@@ -21,10 +21,10 @@ function Login({ onClick, onClose, isOpen, onToggle, onLogin, error, isError, se
 
   useEffect(() => {
     setValidationError({ email: '', password: '' });
-    setValues({email: '', password: ''});
+    setValues({ email: '', password: '' });
     setIsValid({ email: false, password: false });
     setAuthError('')
-  }, [isOpen])
+  }, [setValidationError, setValues, setIsValid, setAuthError, isOpen])
 
   function submitForm(e) {
     const { email, password, name } = values;

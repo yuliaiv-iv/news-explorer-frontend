@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React from 'react';
 import './NewsCard.css';
 import { useRouteMatch } from 'react-router-dom';
 import { Trash } from '../Icons/Trash';

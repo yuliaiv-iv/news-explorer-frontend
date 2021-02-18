@@ -3,7 +3,7 @@ import './SavedNews.css';
 import NewsCard from '../NewsCard/NewsCard';
 import { useUser } from '../../hooks/useUser';
 
-function SavedNews({ savedArticles, removeArticle }) {
+function SavedNews({ savedArticles = [], removeArticle }) {
 
   const { user } = useUser();
   const words = savedArticles.map(a => a.keyword);
@@ -57,15 +57,15 @@ function SavedNews({ savedArticles, removeArticle }) {
           <h4 className='savednews__subtitle'>
             {`${user.name}, у вас ${handleCountArticles()} ${handleEnding(countArticles, wordEnding)}`}
           </h4>
-          {sortedElements.length === 0 ? '' : 
-          <p className='savednews__description'>По ключевым словам: <span className='savednews__description_span'>{getKeywords(sortedElements)} </span>
-          {sortedElements.length <= 3 ? '' : `и ${countWords()}-м другим`}
-          </p>}
+          {sortedElements.length === 0 ? '' :
+            <p className='savednews__description'>По ключевым словам: <span className='savednews__description_span'>{getKeywords(sortedElements)} </span>
+              {sortedElements.length <= 3 ? '' : `и ${countWords()}-м другим`}
+            </p>}
         </div>
         <div className='savednews__container'>
           <ul className='savednews__list'>
             {savedArticles.map((article) =>
-              <NewsCard {...article}
+              <NewsCard
                 article={article}
                 removeArticle={removeArticle}
                 key={article._id}

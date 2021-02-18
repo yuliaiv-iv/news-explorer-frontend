@@ -1,11 +1,17 @@
-import React, { useEffect, useState} from 'react';
+import React from 'react';
 import './NewsCardList.css';
 import NewsCard from '../NewsCard/NewsCard';
 import Button from '../Button/Button';
 
-function NewsCardList ({ articles, isShown, addArticle, removeArticle, handlePopupOpen }) {
-
-  const [visibleCards, setVisibleCards] = useState(3);
+function NewsCardList({
+  articles = [],
+  isShown,
+  addArticle,
+  removeArticle,
+  handlePopupOpen,
+  setVisibleCards,
+  visibleCards
+}) {
 
   const showMoreCards = () => {
     setVisibleCards((prevValue) => prevValue + 3);
@@ -19,7 +25,7 @@ function NewsCardList ({ articles, isShown, addArticle, removeArticle, handlePop
         <h3 className='card-news__title'>Результаты поиска</h3>
         <ul className='card-news__list'>
           {articles.slice(0, visibleCards).map((article, index) =>
-            <NewsCard {...article}
+            <NewsCard
               article={article}
               key={index}
               addArticle={addArticle}

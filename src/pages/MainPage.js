@@ -5,7 +5,6 @@ import Main from '../components/Main/Main';
 import SearchForm from '../components/SearchForm/SearchForm';
 import Wrapper from '../components/Wrapper/Wrapper';
 import * as news from '../utils/NewsApi';
-import { useUser } from '../hooks/useUser';
 
 function MainPage({
   removeArticle,
@@ -15,36 +14,18 @@ function MainPage({
   setArticles,
   setIsShown,
   isShown,
-  handlePopupOpen
+  handlePopupOpen,
+  setVisibleCards,
+  visibleCards
 }) {
 
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
-  const { user } = useUser();
-  const isLogged = !!user;
-
   const [isOpen, setIsOpen] = useState(false);
   const [notFound, setNotFound] = useState(false);
   const [isEmpty, setIsEmpty] = useState(false);
-
-  // useEffect(() => {
-  //   window.onbeforeunload = () => {
-  //     localStorage.setItem('articles', JSON.stringify(articles))
-  //   }
-  // }, [articles])
-
-  // useEffect(() => {
-  //   const storageArticles = JSON.parse(localStorage.getItem('articles'));
-  //   if (storageArticles && isLogged) {
-  //     setArticles(storageArticles);
-  //     setIsShown(true);
-  //   } else {
-  //     setIsShown(false);
-  //   }
-  // }, [setArticles, isLogged]);
-
 
   const getArticles = (keyword) => {
     if (keyword === '') {
@@ -77,7 +58,6 @@ function MainPage({
     }
   };
 
-
   return (
     <>
       <Wrapper section='header'>
@@ -89,6 +69,8 @@ function MainPage({
         <SearchForm
           getArticles={getArticles}
           isEmpty={isEmpty}
+          setVisibleCards={setVisibleCards}
+          visibleCards={visibleCards}
         />
       </Wrapper>
       <Main
@@ -99,6 +81,8 @@ function MainPage({
         addArticle={addArticle}
         removeArticle={removeArticle}
         handlePopupOpen={handlePopupOpen}
+        visibleCards={visibleCards}
+        setVisibleCards={setVisibleCards}
       />
       <About />
     </>

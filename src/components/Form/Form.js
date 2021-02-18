@@ -11,7 +11,7 @@ function Form({ className, onClick, onSubmit, isDisabled, error, isError, button
         onSubmit={onSubmit}
         action="#"
         noValidate
-        >
+      >
         {children}
         <div className={`${className}__button-container`}>
           {isError ? <span className={`${className}__error`}>{error}</span> : ''}

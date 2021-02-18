@@ -23,7 +23,8 @@ function App() {
   const [isSuccessOpen, setIsSuccessOpen] = useState(false);
   const [authError, setAuthError] = useState('');
   const [formError, setFormError] = useState(false);
-  const [savedArticles, setSavedArticles] = useState({});
+  const [savedArticles, setSavedArticles] = useState([]);
+  const [visibleCards, setVisibleCards] = useState(3);
   const [articles, setArticles] = useState([]);
   const { getUser, user } = useUser();
   const isLogged = !!user;
@@ -33,6 +34,17 @@ function App() {
       localStorage.setItem('articles', JSON.stringify(articles))
     }
   }, [articles])
+
+  useEffect(() => {
+    const storageArticles = JSON.parse(localStorage.getItem('articles'));
+    if (storageArticles && isLogged) {
+      setArticles(storageArticles);
+      setIsShown(true)
+    } else {
+      setIsShown(false)
+      setArticles([]);
+    }
+  }, [isLogged])
 
   useEffect(() => {
     const getArticles = async () => {
@@ -69,7 +81,7 @@ function App() {
       .then((data) => {
         if (data.token) {
           localStorage.setItem('token', data.token);
-          setIsLoginOpen(false);
+          localStorage.setItem('articles', JSON.stringify(articles));
         }
       })
       .catch(() => {
@@ -77,7 +89,8 @@ function App() {
         setFormError(true);
       })
       .finally(() => {
-        getUser()
+        getUser();
+        setIsLoginOpen(false);
       })
   }
 
@@ -102,19 +115,7 @@ function App() {
     history.push('/');
   }
 
-  useEffect(() => {
-    if (isLogged) {
-      const storageArticles = JSON.parse(localStorage.getItem('articles'));
-      setArticles(storageArticles);
-    } else {
-      setArticles([]);
-    }
-  }, [isLogged])
-
   const handleSaveArticle = (data) => {
-    if(!isLogged) {
-      console.log('cannot')
-    }
     api.postArticles(data)
       .then((article) => {
         data._id = article._id
@@ -124,7 +125,6 @@ function App() {
         console.log(err);
       });
   };
-
 
   const handleUnSaveArticle = (data) => {
     api.deleteArticle(data._id)
@@ -185,6 +185,8 @@ function App() {
             isShown={isShown}
             setIsShown={setIsShown}
             handlePopupOpen={handlePopupOpen}
+            visibleCards={visibleCards}
+            setVisibleCards={setVisibleCards}
           />
           <Login
             isOpen={isLoginOpen}

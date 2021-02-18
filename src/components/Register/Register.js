@@ -21,10 +21,10 @@ function Register({ onClose, isOpen, onToggle, onRegister, error, isError, setAu
 
   useEffect(() => {
     setValidationError({ email: '', password: '', name: '' });
-    setValues({email: '', password: '', name: ''})
+    setValues({ email: '', password: '', name: '' })
     setIsValid({ email: false, password: false, name: false })
     setAuthError('')
-  }, [isOpen])
+  }, [setValidationError, setValues, setIsValid, setAuthError, isOpen])
 
   function submitForm(e) {
     const { email, password, name } = values;

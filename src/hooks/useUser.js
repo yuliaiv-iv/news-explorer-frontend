@@ -29,11 +29,11 @@ export const UserProvider = ({ children }) => {
   }, [])
 
   return (
-    <CurrentUserContext.Provider 
-    value={{
-      ...state,
-      getUser,
-    }}
+    <CurrentUserContext.Provider
+      value={{
+        ...state,
+        getUser,
+      }}
     >
       {children}
     </CurrentUserContext.Provider>

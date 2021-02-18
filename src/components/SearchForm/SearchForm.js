@@ -3,7 +3,7 @@ import Form from '../Form/Form';
 import FormInput from '../FormInput/FormInput';
 import './SearchForm.css'
 
-function SearchForm({ getArticles, isEmpty }) {
+function SearchForm({ getArticles, isEmpty, setVisibleCards, visibleCards }) {
 
   const [keyword, setKeyword] = useState('');
 
@@ -15,6 +15,7 @@ function SearchForm({ getArticles, isEmpty }) {
 
   const handleSearchSubmit = (e) => {
     e.preventDefault();
+    setVisibleCards(3)
     getArticles(keywordCapital);
   };
 

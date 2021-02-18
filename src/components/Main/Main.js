@@ -4,14 +4,16 @@ import Preloader from '../Preloader/Preloader';
 import NewsCardList from '../NewsCardList/NewsCardList';
 import Wrapper from '../Wrapper/Wrapper';
 
-function Main({ 
-  notFound, 
-  isOpen, 
-  articles, 
-  isShown, 
-  addArticle, 
+function Main({
+  notFound,
+  isOpen,
+  articles,
+  isShown,
+  addArticle,
   removeArticle,
-  handlePopupOpen
+  handlePopupOpen,
+  visibleCards,
+  setVisibleCards
 }) {
 
   return (
@@ -28,6 +30,8 @@ function Main({
             addArticle={addArticle}
             removeArticle={removeArticle}
             handlePopupOpen={handlePopupOpen}
+            visibleCards={visibleCards}
+            setVisibleCards={setVisibleCards}
           />
         </Wrapper>
       </main>
