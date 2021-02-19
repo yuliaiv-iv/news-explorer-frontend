@@ -1,87 +1,83 @@
 import React, { useState, useEffect } from 'react';
 import About from '../components/About/About';
 import Header from '../components/Header/Header';
-import Login from '../components/Login/Login';
 import Main from '../components/Main/Main';
-import PopupSuccess from '../components/PopupSuccess/PopupSuccess';
-import Register from '../components/Register/Register';
 import SearchForm from '../components/SearchForm/SearchForm';
 import Wrapper from '../components/Wrapper/Wrapper';
+import * as news from '../utils/NewsApi';
 
-function MainPage({ isLogin }) {
+function MainPage({
+  removeArticle,
+  onSignOut,
+  addArticle,
+  articles,
+  setArticles,
+  handlePopupOpen,
+  setVisibleCards,
+  visibleCards
+}) {
 
   useEffect(() => {
-    window.scrollTo(0, 0)
+    window.scrollTo(0, 0);
   }, []);
 
-  //Временная реализация открытия и переключения попапов
-  const [loaderOpen, setLoaderOpen] = useState(false);
-  const [isLoginOpen, setIsLoginOpen] = useState(false);
-  const [isRegisterOpen, setIsRegisterOpen] = useState(false);
-  const [isSuccessOpen, setIsSuccessOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
+  const [notFound, setNotFound] = useState(false);
+  const [isEmpty, setIsEmpty] = useState(false);
 
-  function handlePopupOpen() {
-    setIsLoginOpen(true);
-  }
-
-  function handleSuccessOpen() {
-    setIsSuccessOpen(true);
-    setIsRegisterOpen(false)
-  }
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setLoaderOpen(true)
-  }
-
-  function handleTogglePopup() {
-    if (isLoginOpen) {
-      setIsLoginOpen(false)
-      setIsRegisterOpen(true)
+  const getArticles = (keyword) => {
+    if (keyword === '') {
+      setIsEmpty(true)
     } else {
-      setIsLoginOpen(true)
-      setIsRegisterOpen(false)
+      setIsOpen(true)
+      setNotFound(false)
+      setIsEmpty(false)
+      news.searchArticles(keyword)
+        .then((data) => {
+          const newArticle = data.map((article) => ({
+            keyword,
+            ...article
+          }))
+          if (newArticle.length === 0) {
+            setNotFound(true)
+          } else {
+            setArticles(newArticle)
+            setIsOpen(false)
+          }
+        })
+        .catch((err) => {
+          setNotFound(true)
+          console.log(`${err}`)
+        })
     }
-  }
-
-  function closeAllPopups() {
-    setIsLoginOpen(false);
-    setIsRegisterOpen(false);
-    setIsSuccessOpen(false);
-  }
+  };
 
   return (
     <>
       <Wrapper section='header'>
         <Header
           onClick={handlePopupOpen}
-          isLogin={isLogin}
+          onSignOut={onSignOut}
           theme='light'
         />
         <SearchForm
-          onSubmit={handleSubmit}
+          getArticles={getArticles}
+          isEmpty={isEmpty}
+          setVisibleCards={setVisibleCards}
+          visibleCards={visibleCards}
         />
       </Wrapper>
       <Main
-        isOpen={loaderOpen}
-        isLogin={isLogin}
+        isOpen={isOpen}
+        articles={articles}
+        notFound={notFound}
+        addArticle={addArticle}
+        removeArticle={removeArticle}
+        handlePopupOpen={handlePopupOpen}
+        visibleCards={visibleCards}
+        setVisibleCards={setVisibleCards}
       />
       <About />
-      <Login
-        isOpen={isLoginOpen}
-        onClose={closeAllPopups}
-        onToggle={handleTogglePopup}
-      />
-      <Register
-        isOpen={isRegisterOpen}
-        onClose={closeAllPopups}
-        onToggle={handleTogglePopup}
-        onClick={handleSuccessOpen}
-      />
-      <PopupSuccess
-        onClose={closeAllPopups}
-        isOpen={isSuccessOpen}
-      />
     </>
   )
 }

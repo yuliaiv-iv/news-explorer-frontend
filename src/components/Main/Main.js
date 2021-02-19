@@ -1,19 +1,19 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './Main.css';
 import Preloader from '../Preloader/Preloader';
 import NewsCardList from '../NewsCardList/NewsCardList';
 import Wrapper from '../Wrapper/Wrapper';
 
-
-function Main({ isLogin, isOpen }) {
-
-  const [error, setError] = useState(false);
-
-  setTimeout(() => {
-    if (isOpen) {
-      setError(true)
-    }
-  }, 3000);
+function Main({
+  notFound,
+  isOpen,
+  articles,
+  addArticle,
+  removeArticle,
+  handlePopupOpen,
+  visibleCards,
+  setVisibleCards
+}) {
 
   return (
     <>
@@ -21,11 +21,18 @@ function Main({ isLogin, isOpen }) {
         <Wrapper section='main'>
           <Preloader
             isOpen={isOpen}
-            error={error}
+            notFound={notFound}
           />
-          <NewsCardList
-            isLogin={isLogin}
-          />
+          {articles.length === 0 ? null : (
+            <NewsCardList
+              articles={articles}
+              addArticle={addArticle}
+              removeArticle={removeArticle}
+              handlePopupOpen={handlePopupOpen}
+              visibleCards={visibleCards}
+              setVisibleCards={setVisibleCards}
+            />
+          )}
         </Wrapper>
       </main>
     </>

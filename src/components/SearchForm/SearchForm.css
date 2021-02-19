@@ -47,6 +47,19 @@
   font-weight: 400;
   border-radius: 100px;
 }
+.search__error {
+  font-family: 'Inter', 'Roboto', 'Arial';
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.25;
+  color: #FF0000;
+  position: absolute;
+  top: -40%;
+  left: 50%;
+  transform: translate(-50%, 0%);
+  width: 100%;
+  text-align: center;
+}
 
 .search__input:focus {
   outline: none;

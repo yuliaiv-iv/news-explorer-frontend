@@ -5,9 +5,7 @@ import Form from '../Form/Form';
 import Popup from '../Popup/Popup';
 import useForm from '../../hooks/useForm'
 
-function Register({ onClose, isOpen, onToggle }) {
-
-  const errorMessage = 'Такой пользователь уже есть';
+function Register({ onClose, isOpen, onToggle, onRegister, error, isError, setAuthError }) {
 
   const {
     handleInputChange,
@@ -19,13 +17,19 @@ function Register({ onClose, isOpen, onToggle }) {
     setValues,
     setIsValid,
     isValid
-  } = useForm();
+  } = useForm(submitForm);
 
   useEffect(() => {
     setValidationError({ email: '', password: '', name: '' });
-    setValues({email: '', password: '', name: ''})
+    setValues({ email: '', password: '', name: '' })
     setIsValid({ email: false, password: false, name: false })
-  }, [isOpen])
+    setAuthError('')
+  }, [setValidationError, setValues, setIsValid, setAuthError, isOpen])
+
+  function submitForm(e) {
+    const { email, password, name } = values;
+    onRegister(email, password, name);
+  }
 
   return (
     <Popup
@@ -38,8 +42,8 @@ function Register({ onClose, isOpen, onToggle }) {
       <Form
         button='Зарегистрироваться'
         className='popup'
-        // isError={true}
-        // error={errorMessage}
+        error={error}
+        isError={isError}
         onSubmit={handleSubmit}
         isDisabled={!isFormValid}
       >
@@ -57,7 +61,7 @@ function Register({ onClose, isOpen, onToggle }) {
           name='password'
           type='password'
           label='Пароль'
-          minLength='3'
+          minLength='8'
           placeholder='Введите пароль'
           value={values.password}
           onChange={handleInputChange}

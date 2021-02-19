@@ -1,28 +1,35 @@
-import React, { useState} from 'react';
+import React from 'react';
 import './NewsCardList.css';
-import { initialCards as cards } from '../../utils/data';
 import NewsCard from '../NewsCard/NewsCard';
 import Button from '../Button/Button';
 
-function NewsCardList ({ isLogin }) {
-
-  const [visibleCards, setVisibleCards] = useState(3);
+function NewsCardList({
+  articles = [],
+  addArticle,
+  removeArticle,
+  handlePopupOpen,
+  setVisibleCards,
+  visibleCards
+}) {
 
   const showMoreCards = () => {
     setVisibleCards((prevValue) => prevValue + 3);
   }
 
-  const isEntire = visibleCards >= cards.length;
+  const isEntire = visibleCards >= articles.length;
 
   return (
-
     <section className='card-news'>
       <div className='card-news__container'>
         <h3 className='card-news__title'>Результаты поиска</h3>
         <ul className='card-news__list'>
-          {cards.slice(0, visibleCards).map(card =>
-            <NewsCard {...card}
-              isLogin={isLogin}
+          {articles.slice(0, visibleCards).map((article, index) =>
+            <NewsCard
+              article={article}
+              key={index}
+              addArticle={addArticle}
+              removeArticle={removeArticle}
+              handlePopupOpen={handlePopupOpen}
             />)}
         </ul>
         <Button

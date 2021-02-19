@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-const useForm = () => {
+const useForm = callback => {
   const [values, setValues] = useState({});
   const [validationError, setValidationError] = useState({});
   const [isValid, setIsValid] = useState({});
@@ -25,7 +25,7 @@ const useForm = () => {
 
   const handleSubmit = event => {
     event.preventDefault();
-    console.log('Done') /// здесь будет callback function
+    callback();
   }
 
   return {

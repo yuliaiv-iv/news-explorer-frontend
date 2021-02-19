@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import { Logout } from '../Icons/Logout';
 import { Logo } from '../Icons/Logo';
 import Navigation from '../Navigation/Navigation';
@@ -7,11 +8,20 @@ import Button from '../Button/Button';
 import './Header.css';
 import { NavBar } from '../Icons/NavBar';
 import { Closebtn } from '../Icons/Closebtn';
+import { useUser } from '../../hooks/useUser';
 
-function Header({ onClick, isLogin, theme }) {
+function Header({ onClick, onSignOut, theme }) {
 
-  const [isOpen, setIsOpen] = React.useState(false);
-  const [isClicked, setIsClicked] = React.useState(false);
+  const [isOpen, setIsOpen] = useState(false);
+  const [isClicked, setIsClicked] = useState(false);
+  const { user } = useUser();
+  const isLogged = !!user;
+
+  let history = useHistory();
+  const handleHistory = () => {
+    history.push('/');
+  }
+
   const headerClassname = (
     `header header_${theme} ${isOpen ? `header_open-${theme}` : ''}`
   );
@@ -47,10 +57,10 @@ function Header({ onClick, isLogin, theme }) {
             <Button
               className='header'
               modifier={`header__button_${theme}`}
-              onClick={onClick}
-              button={isLogin ? 'Грета' : 'Авторизоваться'}
+              onClick={isLogged ? onSignOut : onClick}
+              button={isLogged ? user.name : 'Авторизоваться'}
             >
-              {isLogin ?
+              {isLogged ?
                 <Logout
                   className='header__logout'
                 /> :
@@ -64,13 +74,17 @@ function Header({ onClick, isLogin, theme }) {
             theme={theme}
             path='/'
             text='Главная'
+            onClick={handleHistory}
           />
-          <InternalLink
-            section='header'
-            theme={theme}
-            path='/saved-news'
-            text='Сохранённые статьи'
-          />
+          {isLogged ?
+            <InternalLink
+              section='header'
+              theme={theme}
+              path='/saved-news'
+              text='Сохранённые статьи'
+            /> :
+            null
+          }
         </Navigation>
       </div>
     </header>

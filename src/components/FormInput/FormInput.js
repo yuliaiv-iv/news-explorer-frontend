@@ -26,7 +26,7 @@ function FormInput({
         <input
           type={type}
           className={isSearchForm ? 'search__input' : 'popup__input'}
-          value={value}
+          value={value || ''}
           name={name}
           minLength={minLength}
           maxLength={maxLength}

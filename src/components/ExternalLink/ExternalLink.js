@@ -3,7 +3,7 @@ import './ExternalLink.css';
 
 function ExternalLink({ href, section, children }) {
   return (
-    <a 
+    <a
       className={`link ${section}__link`}
       href={href}
       target='_blank'

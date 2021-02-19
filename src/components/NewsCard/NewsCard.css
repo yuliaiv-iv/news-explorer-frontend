@@ -55,7 +55,7 @@
   color: #1A1B22;
   display: -webkit-box;
   -webkit-box-orient: vertical;
-  -webkit-line-clamp: var(--lines);
+  -webkit-line-clamp: 4;
   overflow: hidden;
 }
 
@@ -226,6 +226,9 @@
     left: 16px;
     bottom: 16px;
   }
+  .card__text {
+    -webkit-line-clamp: 4;
+  }
   .card__checkbox:hover + .card__popup { 
     visibility: hidden; 
   }
@@ -240,9 +243,6 @@
   }
   .card__link {
     height: 63%;
-  }
-  .card__text {
-    -webkit-line-clamp: 4;
   }
 }
 

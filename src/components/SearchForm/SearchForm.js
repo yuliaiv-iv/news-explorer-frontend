@@ -1,9 +1,24 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Form from '../Form/Form';
 import FormInput from '../FormInput/FormInput';
 import './SearchForm.css'
 
-function SearchForm({ onSubmit }) {
+function SearchForm({ getArticles, isEmpty, setVisibleCards, visibleCards }) {
+
+  const [keyword, setKeyword] = useState('');
+
+  const handleInputSearch = event => {
+    setKeyword(event.target.value);
+  }
+
+  const keywordCapital = keyword.charAt(0).toUpperCase() + keyword.slice(1)
+
+  const handleSearchSubmit = (e) => {
+    e.preventDefault();
+    setVisibleCards(3)
+    getArticles(keywordCapital);
+  };
+
   return (
     <section className='search'>
       <div className='search__panel'>
@@ -12,12 +27,16 @@ function SearchForm({ onSubmit }) {
         <Form
           button='Искать'
           className='search'
-          onSubmit={onSubmit}
+          onSubmit={handleSearchSubmit}
+          isError={isEmpty}
+          error='Нужно ввести ключевое слово'
         >
           <FormInput
             placeholder='Введите тему новости'
             type='text'
             isSearchForm={true}
+            onChange={handleInputSearch}
+            value={keyword}
           />
         </Form>
       </div>

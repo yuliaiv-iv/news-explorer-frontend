@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import FormInput from '../FormInput/FormInput';
 import Form from '../Form/Form';
 import './Login.css'
 import Popup from '../Popup/Popup';
 import useForm from '../../hooks/useForm'
 
-function Login({ onClick, onClose, isOpen, onToggle }) {
+function Login({ onClick, onClose, isOpen, onToggle, onLogin, error, isError, setAuthError }) {
 
   const {
     handleInputChange,
@@ -17,13 +17,19 @@ function Login({ onClick, onClose, isOpen, onToggle }) {
     setValues,
     setIsValid,
     isValid
-  } = useForm();
+  } = useForm(submitForm);
 
   useEffect(() => {
     setValidationError({ email: '', password: '' });
-    setValues({email: '', password: ''})
-    setIsValid({ email: false, password: false })
-  }, [isOpen])
+    setValues({ email: '', password: '' });
+    setIsValid({ email: false, password: false });
+    setAuthError('')
+  }, [setValidationError, setValues, setIsValid, setAuthError, isOpen])
+
+  function submitForm(e) {
+    const { email, password, name } = values;
+    onLogin(email, password, name);
+  }
 
   return (
     <Popup
@@ -39,6 +45,8 @@ function Login({ onClick, onClose, isOpen, onToggle }) {
         className='popup'
         onSubmit={handleSubmit}
         isDisabled={!isFormValid}
+        error={error}
+        isError={isError}
       >
         <FormInput
           name='email'
@@ -55,7 +63,7 @@ function Login({ onClick, onClose, isOpen, onToggle }) {
           name='password'
           type='password'
           label='Пароль'
-          minLength='3'
+          minLength='8'
           placeholder='Введите пароль'
           value={values.password}
           onChange={handleInputChange}

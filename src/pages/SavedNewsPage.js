@@ -2,15 +2,18 @@ import React from 'react';
 import Header from '../components/Header/Header';
 import SavedNews from '../components/SavedNews/SavedNews';
 
-function SavedNewsPage({ isLogin }) {
+function SavedNewsPage({ onSignOut, savedArticles, removeArticle }) {
 
   return (
     <>
       <Header
         theme='dark'
-        isLogin={isLogin}
+        onSignOut={onSignOut}
       />
-      <SavedNews />
+      <SavedNews
+        savedArticles={savedArticles}
+        removeArticle={removeArticle}
+      />
     </>
   )
 }
