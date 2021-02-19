@@ -18,7 +18,6 @@ function App() {
 
   const history = useHistory();
   const [isLoginOpen, setIsLoginOpen] = useState(false);
-  const [isShown, setIsShown] = useState(false);
   const [isRegisterOpen, setIsRegisterOpen] = useState(false);
   const [isSuccessOpen, setIsSuccessOpen] = useState(false);
   const [authError, setAuthError] = useState('');
@@ -39,9 +38,7 @@ function App() {
     const storageArticles = JSON.parse(localStorage.getItem('articles'));
     if (storageArticles && isLogged) {
       setArticles(storageArticles);
-      setIsShown(true)
     } else {
-      setIsShown(false)
       setArticles([]);
     }
   }, [isLogged])
@@ -182,8 +179,6 @@ function App() {
             removeArticle={handleUnSaveArticle}
             isLoginOpen={isLoginOpen}
             setIsLoginOpen={setIsLoginOpen}
-            isShown={isShown}
-            setIsShown={setIsShown}
             handlePopupOpen={handlePopupOpen}
             visibleCards={visibleCards}
             setVisibleCards={setVisibleCards}
@@ -228,7 +223,6 @@ function App() {
       </Switch>
       <Footer />
     </>
-
   );
 }
 

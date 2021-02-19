@@ -12,8 +12,6 @@ function MainPage({
   addArticle,
   articles,
   setArticles,
-  setIsShown,
-  isShown,
   handlePopupOpen,
   setVisibleCards,
   visibleCards
@@ -32,7 +30,6 @@ function MainPage({
       setIsEmpty(true)
     } else {
       setIsOpen(true)
-      setIsShown(false)
       setNotFound(false)
       setIsEmpty(false)
       news.searchArticles(keyword)
@@ -43,16 +40,13 @@ function MainPage({
           }))
           if (newArticle.length === 0) {
             setNotFound(true)
-            setIsShown(false)
           } else {
             setArticles(newArticle)
-            setIsShown(true)
             setIsOpen(false)
           }
         })
         .catch((err) => {
           setNotFound(true)
-          setIsShown(false)
           console.log(`${err}`)
         })
     }
@@ -76,7 +70,6 @@ function MainPage({
       <Main
         isOpen={isOpen}
         articles={articles}
-        isShown={isShown}
         notFound={notFound}
         addArticle={addArticle}
         removeArticle={removeArticle}
