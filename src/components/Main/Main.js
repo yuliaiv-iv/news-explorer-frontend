@@ -16,26 +16,24 @@ function Main({
 }) {
 
   return (
-    <>
-      <main className='main'>
-        <Wrapper section='main'>
-          <Preloader
-            isOpen={isOpen}
-            notFound={notFound}
+    <main className='main'>
+      <Wrapper section='main'>
+        <Preloader
+          isOpen={isOpen}
+          notFound={notFound}
+        />
+        {articles.length === 0 ? null : (
+          <NewsCardList
+            articles={articles}
+            addArticle={addArticle}
+            removeArticle={removeArticle}
+            handlePopupOpen={handlePopupOpen}
+            visibleCards={visibleCards}
+            setVisibleCards={setVisibleCards}
           />
-          {articles.length === 0 ? null : (
-            <NewsCardList
-              articles={articles}
-              addArticle={addArticle}
-              removeArticle={removeArticle}
-              handlePopupOpen={handlePopupOpen}
-              visibleCards={visibleCards}
-              setVisibleCards={setVisibleCards}
-            />
-          )}
-        </Wrapper>
-      </main>
-    </>
+        )}
+      </Wrapper>
+    </main>
   )
 }
 
