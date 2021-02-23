@@ -223,7 +223,6 @@ function App() {
       </Switch>
       <Footer />
     </>
-
   );
 }
 
