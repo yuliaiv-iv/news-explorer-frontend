@@ -22,7 +22,7 @@ Backend проекта можно помотреть **[здесь](https://gith
 * **`API для аутентификации пользователей и сохранения статей`** 
 * React router dom **`Route, Switch, Redirect, useHistory`**
 
-### 
+### Инструменты
 * HTML, CSS
 * Javascript
 * React
@@ -34,8 +34,8 @@ Backend проекта можно помотреть **[здесь](https://gith
 * `npm start` запустить проект на http://localhost:3000/
 
 <div align="center">
-    <img src="./src/images/new-explorer-1.jpg" width="400" height="300"/>
-    <img src="./src/images/new-explorer-2.jpg" width="400" height="300"/>
-    <img src="./src/images/new-explorer-3.jpg" width="400" height="300"/>
-    <img src="./src/images/new-explorer-4.jpg" width="400" height="300"/>
+    <img src="./src/images/news-explorer-1.jpg" width="900" />
+    <img src="./src/images/news-explorer-2.jpg" width="900" />
+    <img src="./src/images/news-explorer-3.jpg" width="900" />
+    <img src="./src/images/news-explorer-4.jpg" width="900" />
 </div>
