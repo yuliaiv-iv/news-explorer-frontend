@@ -16,5 +16,3 @@ export const searchArticles = (keyword) => {
       return data.articles
     })
 }
-
-// 1d4fbc859c2e4366b37f69d873101c1f

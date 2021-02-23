@@ -5,7 +5,6 @@ import Button from '../Button/Button';
 
 function NewsCardList({
   articles = [],
-  isShown,
   addArticle,
   removeArticle,
   handlePopupOpen,
@@ -20,7 +19,7 @@ function NewsCardList({
   const isEntire = visibleCards >= articles.length;
 
   return (
-    <section className={`card-news ${isShown ? 'card-news_open' : ''}`}>
+    <section className='card-news'>
       <div className='card-news__container'>
         <h3 className='card-news__title'>Результаты поиска</h3>
         <ul className='card-news__list'>

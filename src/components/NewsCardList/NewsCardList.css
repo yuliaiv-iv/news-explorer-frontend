@@ -1,7 +1,4 @@
 .card-news {
-  display: none;
-}
-.card-news_open {
   display: block;
   padding: 80px 0 80px;
 }

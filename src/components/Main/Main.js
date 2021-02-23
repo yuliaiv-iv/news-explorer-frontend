@@ -8,7 +8,6 @@ function Main({
   notFound,
   isOpen,
   articles,
-  isShown,
   addArticle,
   removeArticle,
   handlePopupOpen,
@@ -17,25 +16,24 @@ function Main({
 }) {
 
   return (
-    <>
-      <main className='main'>
-        <Wrapper section='main'>
-          <Preloader
-            isOpen={isOpen}
-            notFound={notFound}
-          />
+    <main className='main'>
+      <Wrapper section='main'>
+        <Preloader
+          isOpen={isOpen}
+          notFound={notFound}
+        />
+        {articles.length === 0 ? null : (
           <NewsCardList
             articles={articles}
-            isShown={isShown}
             addArticle={addArticle}
             removeArticle={removeArticle}
             handlePopupOpen={handlePopupOpen}
             visibleCards={visibleCards}
             setVisibleCards={setVisibleCards}
           />
-        </Wrapper>
-      </main>
-    </>
+        )}
+      </Wrapper>
+    </main>
   )
 }
 
