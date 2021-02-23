@@ -24,10 +24,9 @@ Backend проекта можно помотреть **[здесь](https://gith
 * React router dom **`Route, Switch, Redirect, useHistory`**
 
 ### Инструменты
-* HTML, CSS
-* Javascript
+* HTML5, CSS3
+* JavaScript
 * React
-* API
 * БЭМ
 
 ### Запуск и установка
