@@ -1,6 +1,7 @@
 ## Diploma news-explorer-frontend
 
 Ссылка на **[News Explorer](http://newsonthecloud.students.nomoredomains.monster/)**
+
 Backend проекта можно помотреть **[здесь](https://github.com/yuliaiv-iv/news-explorer-api)**
 
 ### Описание
