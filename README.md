@@ -1,4 +1,4 @@
-## Diploma news-explorer-frontend
+## News-explorer-frontend
 
 Ссылка на **[News Explorer](http://newsonthecloud.students.nomoredomains.monster/)**
 
